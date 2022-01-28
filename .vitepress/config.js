@@ -116,7 +116,7 @@ function createSidebar() {
         text: '常用组件',
         children: [
           {
-            text: 'Basic',
+            text: 'Basic 基础组件',
             link: '/components/basic',
           },
           {
@@ -128,7 +128,7 @@ function createSidebar() {
             link: '/components/icon',
           },
           {
-            text: 'Authority',
+            text: 'Authority 鉴权',
             link: '/components/auth',
           },
           {
