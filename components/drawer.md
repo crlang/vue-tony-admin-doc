@@ -1,12 +1,8 @@
-# Drawer 抽屉组件
+# Drawer 抽屉
 
-对 `Element Plus` 的 drawer 组件进行封装，扩展拖拽，全屏，自适应高度等功能。
+对 `Element Plus` 的 `Drawer` 组件进行二次封装，**用法更简洁**。
 
 ## Usage
-
-**由于 drawer 内部代码一般独立成单独文件，推荐独立成组件来进行开发，所以示例都是以独立的文件来进行说明**
-
-**独立组件代码，用于写组件内部的内容**
 
 ```vue
 <template>
@@ -171,9 +167,9 @@ changeLoading(true);
 
 ## Props
 
-::: tip 温馨提醒
+::: tip 温馨提示
 
-除以下参数外，官方文档内的 props 也都支持，具体可以参考 [antv drawer](https://2x.antdv.com/components/drawer-cn/#API)
+- **保持** [Element Plus Descriptions 组件](https://element-plus.gitee.io/zh-CN/component/drawer.html) **原有功能**的情况下扩展以下属性
 
 :::
 

@@ -107,7 +107,7 @@ function createSidebar() {
         text: '全局组件',
         children: [
           {
-            text: 'Button',
+            text: 'Button 自定义按钮',
             link: '/components/glob/button',
           },
         ],
@@ -116,8 +116,12 @@ function createSidebar() {
         text: '常用组件',
         children: [
           {
-            text: 'Basic',
+            text: 'Basic 基础组件',
             link: '/components/basic',
+          },
+          {
+            text: 'CardGrid 栅格卡片',
+            link: '/components/card-grid',
           },
           {
             text: 'Page',
@@ -128,7 +132,7 @@ function createSidebar() {
             link: '/components/icon',
           },
           {
-            text: 'Authority',
+            text: 'Authority 鉴权',
             link: '/components/auth',
           },
           {
@@ -164,16 +168,16 @@ function createSidebar() {
             link: '/components/json-preview',
           },
           {
-            text: 'CountDown',
+            text: 'CountDown 倒计时',
             link: '/components/count-down',
           },
 
           {
-            text: 'ClickOutSide',
+            text: 'ClickOutSide 监听点击区域',
             link: '/components/click-out-side',
           },
           {
-            text: 'CountTo',
+            text: 'CountTo 数字动画',
             link: '/components/count-to',
           },
           {
@@ -181,11 +185,11 @@ function createSidebar() {
             link: '/components/cropper',
           },
           {
-            text: 'Description',
+            text: 'Description 详情',
             link: '/components/desc',
           },
           {
-            text: 'Drawer',
+            text: 'Drawer 抽屉',
             link: '/components/drawer',
           },
           {
@@ -229,7 +233,7 @@ function createSidebar() {
             link: '/components/time',
           },
           {
-            text: 'StrengthMeter',
+            text: 'StrengthMeter 校验密码强度',
             link: '/components/strength-meter',
           },
           {
