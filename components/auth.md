@@ -1,6 +1,8 @@
-# Authority
 
-用于项目权限的组件，一般用于按钮级等细粒度权限管理
+
+# Authority 鉴权
+
+用于项目权限的鉴权组件，一般用于按钮级等细粒度权限管理
 
 ## Usage
 
@@ -8,16 +10,18 @@
 <template>
   <div>
     <Authority :value="RoleEnum.ADMIN">
-      <a-button type="primary" block> 只有admin角色可见 </a-button>
+      <ElButton type="primary"> 只有admin角色可见 </ElButton>
     </Authority>
   </div>
 </template>
 <script>
-  import Authority from '@/components/Authority';
-  import { defineComponent } from 'vue';
-  export default defineComponent({
-    components: { Authority },
-  });
+import { defineComponent } from 'vue'
+import { ElButton } from 'element-plus'
+import Authority from '@/components/Authority'
+
+export default defineComponent({
+  components: { Authority, ElButton },
+})
 </script>
 ```
 
