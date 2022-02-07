@@ -1,4 +1,4 @@
-import Theme from '../theme-default/index';
+import Theme from '../theme-default';
 
 import 'windi-base.css';
 import 'windi-components.css';

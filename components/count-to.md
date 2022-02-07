@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { CountTo } from '@/components/CountTo/index'
+import { CountTo } from '@/components/CountTo'
 
 export default defineComponent({
   components: {

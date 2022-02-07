@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { BasicDragVerify, DragVerifyActionType, PassingData } from '@/components/Verify/index';
+  import { BasicDragVerify, DragVerifyActionType, PassingData } from '@/components/Verify';
   export default defineComponent({
     components: { BasicDragVerify },
     setup() {
@@ -66,7 +66,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { RotateDragVerify } from '@/components/Verify/index';
+  import { RotateDragVerify } from '@/components/Verify';
 
   import img from '@/assets/images/header.jpg';
   export default defineComponent({

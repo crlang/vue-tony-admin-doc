@@ -38,7 +38,7 @@
     ScaleRotateTransition,
     ExpandXTransition,
     ExpandTransition,
-  } from '@/components/Transition/index';
+  } from '@/components/Transition';
 
   const transitionList = [
     'Fade',

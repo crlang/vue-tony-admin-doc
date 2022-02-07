@@ -112,8 +112,8 @@ form 组件还提供了 `useForm`，方便调用函数内部方法
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
-  import { CollapseContainer } from '@/components/Container/index';
+  import { BasicForm, FormSchema, useForm } from '@/components/Form';
+  import { CollapseContainer } from '@/components/Container';
   import { useMessage } from '@/hooks/web/useMessage';
   const schemas: FormSchema[] = [
     {
@@ -521,9 +521,9 @@ export type ComponentType = xxxx | 'componentName';
 这种写法只能在当前页使用，页面销毁之后会从 componentMap 删除相应的组件
 
 ```tsx
-import { useComponentRegister } from '@/components/form/index';
+import { useComponentRegister } from '@/components/form';
 
-import { StrengthMeter } from '@/components/strength-meter/index';
+import { StrengthMeter } from '@/components/strength-meter';
 
 useComponentRegister('StrengthMeter', StrengthMeter);
 ```
@@ -546,7 +546,7 @@ useComponentRegister('StrengthMeter', StrengthMeter);
 </template>
 <script lang="ts">
   import { defineComponent, h } from 'vue';
-  import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
+  import { BasicForm, FormSchema, useForm } from '@/components/Form';
   import { useMessage } from '@/hooks/web/useMessage';
   import { ElInput } from 'element-plus';
   const schemas: FormSchema[] = [
@@ -629,8 +629,8 @@ useComponentRegister('StrengthMeter', StrengthMeter);
 </template>
 <script lang="ts">
   import { defineComponent } from 'compatible-vue';
-  import { BasicForm, useForm } from '@/components/Form/index';
-  import { BasicModal } from '@/components/modal/index';
+  import { BasicForm, useForm } from '@/components/Form';
+  import { BasicModal } from '@/components/modal';
   export default defineComponent({
     name: 'FormDemo',
     setup(props) {
@@ -667,7 +667,7 @@ useComponentRegister('StrengthMeter', StrengthMeter);
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
+  import { BasicForm, FormSchema, useForm } from '@/components/Form';
   const schemas: FormSchema[] = [
     {
       field: 'field1',

@@ -17,7 +17,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { BasicArrow } from '@/components/Baisc/index'
+import { BasicArrow } from '@/components/Baisc'
 
 export default defineComponent({
   components: { BasicArrow },
@@ -47,7 +47,7 @@ export default defineComponent({
 
 <script>
 import { defineComponent } from 'vue'
-import { BasicHelp } from '@/components/Baisc/index'
+import { BasicHelp } from '@/components/Baisc'
 
 export default defineComponent({
   components: { BasicHelp },
@@ -84,7 +84,7 @@ export default defineComponent({
 </template>
 
 <script>
-import { BasicTitle } from '@/components/Basic/index'
+import { BasicTitle } from '@/components/Basic'
 import { defineComponent } from 'vue'
 
 export default defineComponent({

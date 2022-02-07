@@ -10,10 +10,10 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { BasicTree } from '@/components/Tree/index';
+  import { BasicTree } from '@/components/Tree';
   import { treeData } from './data';
-  import { CollapseContainer } from '@/components/Container/index';
-  import { TreeItem } from '@/components/Tree/index';
+  import { CollapseContainer } from '@/components/Container';
+  import { TreeItem } from '@/components/Tree';
 
   export const treeData: TreeItem[] = [
     {

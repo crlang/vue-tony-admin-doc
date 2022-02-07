@@ -28,8 +28,8 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { CollapseContainer } from '@/components/Container/index';
-  import { ScrollContainer, ScrollActionType } from '@/components/Container/index';
+  import { CollapseContainer } from '@/components/Container';
+  import { ScrollContainer, ScrollActionType } from '@/components/Container';
   export default defineComponent({
     components: { CollapseContainer, ScrollContainer },
     setup() {

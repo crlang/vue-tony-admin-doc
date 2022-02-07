@@ -10,7 +10,7 @@
 </template>
 <script lang="ts">
   import { defineComponent, ref, unref } from 'vue';
-  import { QrCode, QrCodeActionType } from '@/components/Qrcode/index';
+  import { QrCode, QrCodeActionType } from '@/components/Qrcode';
   import LogoImg from '@/assets/images/logo.png';
   const qrCodeUrl = 'https://www.vvbin.cn';
   export default defineComponent({

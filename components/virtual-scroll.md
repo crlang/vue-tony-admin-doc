@@ -28,7 +28,7 @@
 </template>
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { VirtualScroll } from '@/components/VirtualScroll/index';
+  import { VirtualScroll } from '@/components/VirtualScroll';
 
   import { ElDivider } from 'element-plus';
   const data: any[] = (() => {

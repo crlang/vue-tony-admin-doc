@@ -82,11 +82,9 @@ h1 {
 h2 {
   margin-top: 2.25rem;
   margin-bottom: 1.25rem;
-  border-bottom: 1px solid var(--c-divider);
   padding-bottom: 0.3rem;
   line-height: 1.25;
   font-size: 1.65rem;
-  /* overflow-x: auto; */
 }
 
 h2 + h3 {
@@ -163,14 +161,15 @@ li > ol {
 }
 
 table {
-  display: block;
+  display: table;
+  width: 100%;
   border-collapse: collapse;
-  margin: 1rem 0;
+  margin-bottom: 3rem;
   overflow-x: auto;
 }
 
 tr {
-  border-top: 1px solid #dfe2e5;
+  border-bottom: 1px solid #dfe2e5;
 }
 
 tr:nth-child(2n) {
@@ -179,7 +178,7 @@ tr:nth-child(2n) {
 
 th,
 td {
-  border: 1px solid #dfe2e5;
+  border: none;
   padding: 0.6em 1em;
 }
 

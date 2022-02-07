@@ -148,7 +148,7 @@ function createSidebar() {
             link: '/components/pop-confirm-button',
           },
           {
-            text: 'CollapseContainer',
+            text: 'CollapseContainer 区域折叠容器',
             link: '/components/collapse-container',
           },
           {

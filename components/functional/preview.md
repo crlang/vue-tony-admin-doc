@@ -18,7 +18,7 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
   import { ElAlert } from 'element-plus';
-  import { createImgPreview } from '@/components/Preview/index';
+  import { createImgPreview } from '@/components/Preview';
   const imgList: string[] = [
     'https://picsum.photos/id/66/346/216',
     'https://picsum.photos/id/67/346/216',

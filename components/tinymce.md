@@ -20,7 +20,7 @@ const CDN_URL = 'https://cdn.bootcdn.net/ajax/libs/tinymce/5.5.1';
 </template>
 <script lang="ts">
   import { defineComponent, ref } from 'vue';
-  import { Tinymce } from '@/components/Tinymce/index';
+  import { Tinymce } from '@/components/Tinymce';
 
   export default defineComponent({
     components: { Tinymce },
