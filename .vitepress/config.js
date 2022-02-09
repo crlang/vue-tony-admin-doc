@@ -152,7 +152,7 @@ function createSidebar() {
             link: '/components/collapse-container',
           },
           {
-            text: 'ScrollContainer',
+            text: 'ScrollContainer 区域滚动容器',
             link: '/components/scroll-container',
           },
           {
