@@ -1,43 +1,38 @@
-# Cropper
+# Cropper 图片/头像裁剪
 
-图片裁剪组件
+:::tip 温馨提示
+测试此方法需要在启动测试服务器，启动方法请看 ` 指南 -> 其它 -> 测试服务 `
+:::
 
-## CropperImage
-
-图片裁剪组件
+## CropperImage 裁剪图片
 
 ### Usage
 
 ```vue
 <template>
-  <CropperImage ref="refCropper" :src="img" @cropend="handleCropend" style="width: 40vw" />
+  <CropperImage ref="refCropper" :src="img" @cropend="handleCropend"/>
 </template>
+
 <script lang="ts">
-  import { defineComponent, ref } from 'vue';
-  import { CropperImage } from '@/components/Cropper';
-  import img from '@/assets/images/header.jpg';
+import { defineComponent, ref } from 'vue'
+import { CropperImage } from '@/components/Cropper'
+import img from '@/assets/images/header.jpg'
 
-  export default defineComponent({
-    components: {
-      CropperImage,
-    },
-    setup() {
-      const info = ref('');
-      const cropperImg = ref('');
+export default defineComponent({
+  components: {
+    CropperImage,
+  },
+  setup() {
+    function handleCropend(data) {
+      console.log(data)
+    }
 
-      function handleCropend({ imgBase64, imgInfo }) {
-        info.value = imgInfo;
-        cropperImg.value = imgBase64;
-      }
-
-      return {
-        img,
-        info,
-        cropperImg,
-        handleCropend,
-      };
-    },
-  });
+    return {
+      img,
+      handleCropend,
+    }
+  },
+})
 </script>
 ```
 
@@ -45,13 +40,13 @@
 
 | 属性            | 类型      | 默认值           | 说明             |
 | --------------- | --------- | ---------------- | ---------------- |
-| src             | `string`  | -                | 图片源           |
+| src             | `string`  | -                | 图片 URL           |
 | alt             | `string`  | -                | 图片 alt         |
 | circled         | `boolean` | `false`          | 圆形裁剪框       |
-| realTimePreview | `boolean` | `true`           | 实时触发预览     |
-| height          | `string`  | `360px`          | 高度             |
-| crossorigin     | `string`  | -                | crossorigin      |
-| imageStyle      | `object`  | ``               | 图片样式         |
+| realTimePreview | `boolean` | `true`           | 是否实时返回数据，否则需要执行 `croppered()` 才会返回数据     |
+| size           | `number`  | `300`            | 图片展示尺寸(px)             |
+| crossorigin     | `string`  | -                | 跨域源，可选`anonymous`/`use-credentials`      |
+| imageStyle      | `object`  | -               | 图片样式         |
 | options         | `object`  | `DefaultOptions` | corpperjs 配置项 |
 
 #### DefaultOptions
@@ -81,9 +76,27 @@
 }
 ```
 
-## CropperAvatar
+文档参考👉👉👉 [cropperjs 文档](https://github.com/fengyuanchen/cropperjs/blob/main/README.md#options)
 
-头像裁剪组件
+
+### Events
+
+| 名称      | 参数                             |  说明         |
+| --------- | --------------------------------  | ------------ |
+| ready    | `(cropper)`                         |  载入图像之后触发  |
+| cropend    | `(base64Img, imgInfo)`               | 裁剪完成时触发   |
+| cropendError    | -              | 裁剪失败时触发   |
+
+
+### Methods
+
+| 名称      | 参数                     |  说明         |
+| --------- | ----------------------- | ------------ |
+| croppered    | -                    | `realTimePreview` 为 `false` 时，需要执行此方法裁剪，才会返回数据   |
+
+
+
+## CropperAvatar 裁剪头像
 
 ### Usage
 
@@ -91,39 +104,53 @@
 <template>
   <CropperAvatar :uploadApi="uploadApi" />
 </template>
-<script lang="ts">
-  import { defineComponent, ref } from 'vue';
-  import { CropperAvatar } from '@/components/Cropper';
-  import { uploadApi } from '@/api/sys/upload';
 
-  export default defineComponent({
-    components: {
-      CropperAvatar,
-    },
-  });
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { CropperAvatar } from '@/components/Cropper'
+import { uploadApi } from '@/api/sys/upload'
+
+export default defineComponent({
+  components: {
+    CropperAvatar,
+  },
+  setup() {
+    return { uploadApi }
+  },
+})
 </script>
 ```
 
 ### Props
 
-| 属性      | 类型                                              | 默认值  | 说明         | 版本 |
-| --------- | ------------------------------------------------- | ------- | ------------ | ---- |
-| width     | `string,number`                                   | `200px` | 图片源       |  |
-| uploadApi | `({ file: Blob, name: string }) => Promise<void>` | -       | 图片上传接口 |  |
-| value     | `String`                                          | -       | 当前头像地址(v-model) | 2.5.3 |
-| showBtn   | `Boolean`                                         | true    | 是否显示按钮 | 2.5.3 |
-| btnText   | `String`                                          | -       | 按钮文案    | 2.5.3 |
-| btnProps  | `ButtonProps`                                     | -       | 按钮的其它属性 | 2.5.3 |
+| 属性      | 类型                                  | 默认值  | 说明         |
+| --------- | -------------------------------------  | ------- | ------------ |
+| size     | `number`                              | `200`   | 头像尺寸       |
+| value   | `string` | -       | 默认头像URL地址 |
+| showBtn     | `boolean`                        | -       | 是否显示上传按钮 |
+| btnType   | `string`                            | true    | 按钮类型（参考按钮类型） |
+| btnText   | `string`                       | -       | 按钮文字    |
+| uploadName  | `string`                    | -       | 上传的文件参数名 |
+| uploadApi | `(params: UploadFileParams) => Promise<void>` | -       | 上传的接口方法 |
+
+**UploadFileParams**
+
+```ts
+{
+  // 上传的文件
+  file: File | Blob;
+  // 其它参数
+  data?: Recordable;
+  // 上传的文件参数名
+  name?: string;
+  // 上传的文件名
+  filename?: string;
+}
+```
+
 
 ### Events
 
-| 名称      | 参数                                              |  说明         | 版本 |
-| --------- | ------------------------------------------------- | ------------ | ---- |
-| change    | `value: String`                                   | 当头像上传完成时触发   | 2.5.3 |
-
-### Methods
-
-| 名称      | 定义                                              |  说明         | 版本 |
-| --------- | ------------------------------------------------- | ------------ | ---- |
-| openModal    | `()=>void`                                 | 打开上传Modal   | 2.5.3 |
-| closeModal    | `()=>void`                                 | 关闭上传Modal   | 2.5.3 |
+| 名称      | 参数                                |  说明         |
+| --------- | -----------------------------------------  | ------------ |
+| change    | `({base64Img,responseData})`               | 当头像上传完成时触发   |

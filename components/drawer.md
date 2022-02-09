@@ -1,192 +1,77 @@
 # Drawer 抽屉
 
-对 `Element Plus` 的 `Drawer` 组件进行二次封装，**用法更简洁**。
+对 `Element Plus` 的 `Drawer` 组件进行二次封装，**用法简洁，内容丰富**。
 
 ## Usage
 
 ```vue
 <template>
-  <BasicDrawer v-bind="$attrs" title="Drawer Title" width="50%"> Drawer Info. </BasicDrawer>
-</template>
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { BasicDrawer } from '@/components/Drawer';
-  export default defineComponent({
-    components: { BasicDrawer },
-  });
-</script>
-```
-
-**页面引用弹窗**
-
-```vue
-<template>
-  <div>
-    <Drawer @register="register" />
-  </div>
-</template>
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { useDrawer } from '@/components/Drawer';
-  import Drawer from './Drawer.vue';
-
-  export default defineComponent({
-    components: { Drawer },
-    setup() {
-      const [register, { openDrawer }] = useDrawer();
-      return {
-        register,
-        openDrawer,
-      };
-    },
-  });
-</script>
-```
-
-## useDrawer
-
-**useDrawer** 用于操作组件
-
-```ts
-const [register, { openDrawer, setDrawerProps }] = useDrawer();
-```
-
-**register**
-
-register 用于注册 `useDrawer`，如果需要使用 `useDrawer` 提供的 api，必须将 `register` 传入组件的 `onRegister`。
-
-原理其实很简单，就是 vue 的组件子传父通信，内部通过 `emit("register"，instance)` 实现。
-
-同时，独立出去的组件需要将 `attrs` 绑定到 Drawer 的上面。
-
-```tsx
-<BasicDrawer v-bind="$attrs"> Drawer Info. </BasicDrawer>
-```
-
-**openDrawer**
-
-用于打开/关闭弹窗
-
-```ts
-// true/false: 打开关闭弹窗
-// data: 传递到子组件的数据
-openDrawer(true, data);
-```
-
-**closeDrawer**
-
-用于关闭弹窗
-
-```ts
-closeDrawer();
-```
-
-**setDrawerProps**
-
-用于更改 drawer 的 props 参数因为 drawer 内容独立成组件，如果在外部页面需要更改 props 可能比较麻烦，所以提供 **setDrawerProps** 方便更改内部 drawer 的 props
-
-[Props](#Props) 内容可以见下方
-
-```ts
-setDrawerProps(props);
-```
-
-## useDrawerInner
-
-用于独立的 Drawer 内部调用
-
-```vue
-<template>
-  <BasicDrawer v-bind="$attrs" @register="register" title="Drawer Title" width="50%">
-    Drawer Info.
-    <a-button type="primary" @click="closeDrawer">内部关闭drawer</a-button>
+  <Button @click="openDrawerLoading">打开Drawer</Button>
+  <BasicDrawer @register="register" title="Drawer Title" size="50%">
+    <p> Drawer Info.</p>
+    <Button @click="closeDrawer">关闭 Drawer</Button>
   </BasicDrawer>
 </template>
+
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { BasicDrawer, useDrawerInner } from '@/components/Drawer';
-  export default defineComponent({
-    components: { BasicDrawer },
-    setup() {
-      const [register, { closeDrawer }] = useDrawerInner();
-      return { register, closeDrawer };
-    },
-  });
+import { defineComponent } from 'vue'
+import { BasicDrawer, useDrawer } from '@/components/Drawer'
+
+export default defineComponent({
+  components: { BasicDrawer },
+  setup() {
+    const [register, { openDrawer, setDrawerProps, closeDrawer }] = useDrawer()
+
+    function openDrawerLoading() {
+      openDrawer()
+      setDrawerProps({ loading: true })
+      setTimeout(() => {
+        setDrawerProps({ loading: false })
+      }, 2000)
+    }
+
+    return {
+      register,
+      openDrawerLoading,
+      closeDrawer,
+    }
+  },
+})
 </script>
 ```
 
-**useModalInner**用于操作独立组件
-
-```ts
-const [register, { closeModal, setModalProps }] = useModalInner(callback);
-```
-
-**callback**
-
-type: `(data:any)=>void`
-
-回调函数用于接收 openDrawer 第二个参数传递的值
-
-```ts
-openDrawer((data: any) => {
-  console.log(data);
-});
-```
-
-**closeDrawer**
-
-用于关闭抽屉
-
-```ts
-closeDrawer();
-```
-
-**changeOkLoading**
-
-用于修改确认按钮的 loading 状态
-
-```ts
-// true or false
-changeOkLoading(true);
-```
-
-**changeLoading**
-
-用于修改 modal 的 loading 状态
-
-```ts
-// true or false
-changeLoading(true);
-```
-
-**setDrawerProps**
-
-用于更改 drawer 的 props 参数因为 modal 内容独立成组件，如果在外部页面需要更改 props 可能比较麻烦，所以提供**setDrawerProps** 方便更改内部 drawer 的 props
-
-[Props](#Props) 内容可以见下方
 
 ## Props
 
 ::: tip 温馨提示
 
-- **保持** [Element Plus Descriptions 组件](https://element-plus.gitee.io/zh-CN/component/drawer.html) **原有功能**的情况下扩展以下属性
+- **保持** [Element Plus Drawer 组件](https://element-plus.gitee.io/zh-CN/component/drawer.html) **原有功能**的情况下扩展以下属性
 
 :::
 
-| 属性           | 类型                 | 默认值  | 可选值 | 说明                                 |
-| -------------- | -------------------- | ------- | ------ | ------------------------------------ |
-| isDetail       | `boolean`            | `false` | -      | 是否为详情模式                       |
-| loading        | `boolean`            | `false` | -      | loading 状态                         |
-| loadingText    | `string`             | ``      | -      | loading 文本 s                       |
-| showDetailBack | `boolean`            | `true`  | -      | isDetail=true 状态下是否显示返回按钮 |
-| closeFunc      | `() => Promise<boolean>` | -       | -      | 自定义关闭函数，返回`true`关闭，否则不关闭                     |
-| showFooter     | `boolean`            | -       | -      | 是否显示底部                         |
-| footerHeight   | `number`             | `60`    | -      | 底部区域高度                         |
+| 属性           | 类型                 | 默认值  | 说明                                 |
+| -------------- | -------------------- | ------- | ------------------------------------ |
+| isDetail       | `boolean`            | `false` | 是否为详情模式                       |
+| showDetailBack | `boolean`            | `true`  | isDetail=true 状态下是否显示返回按钮 |
+| loading        | `boolean`            | `false` | loading 状态                         |
+| loadingText    | `string`             | -      | loading 文本                       |
+| closeFunc      | `() => Promise<boolean>` | -   | 自定义关闭函数                     |
+| showFooter     | `boolean`            | -       | 是否显示底部区域                         |
+| footerHeight   | `number`             | `60`    | 底部区域高度                         |
+| showConfirmBtn   | `boolean`             | `true`    | 是否显示确定按钮                   |
+| confirmText   | `string`             | `Ok`    | 确定按钮文本                         |
+| confirmType   | `string`             | `primary`    | 确定按钮类型（参考按钮类型）                         |
+| confirmLoading   | `boolean`             | `false`    | 确定按钮是否显示加载中         |
+| showCancelBtn   | `boolean`             | `true`    | 是否显示取消按钮                         |
+| cancelText   | `string`             | `Cancel`    | 取消按钮文本                         |
+| cancelType   | `string`             | `default`    | 取消按钮类型（参考按钮类型）                         |
+
 
 ## Events
 
 | 事件           | 回调参数                  | 说明               |
 | -------------- | ------------------------- | ------------------ |
-| close          | `(e)=>void`               | 点击关闭回调       |
-| visible-change | `(visible:boolean)=>void` | 弹窗打开关闭时触发 |
-| ok             | `(e)=>void`               | 点击确定回调       |
+| register       | -               | 通过 `@register` 注册组件 |
+| close          | -               | 点击关闭时回调       |
+| ok             | -               | 点击确定时回调       |
+| visible-change | `(visible:boolean)` | 弹窗打开关闭时触发 |

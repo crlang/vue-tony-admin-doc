@@ -160,10 +160,6 @@ function createSidebar() {
             link: '/components/lazy-container',
           },
           {
-            text: 'CodeEditor',
-            link: '/components/code-editor',
-          },
-          {
             text: 'JsonPreview',
             link: '/components/json-preview',
           },
@@ -181,7 +177,7 @@ function createSidebar() {
             link: '/components/count-to',
           },
           {
-            text: 'Cropper',
+            text: 'Cropper 图片/头像裁剪',
             link: '/components/cropper',
           },
           {
