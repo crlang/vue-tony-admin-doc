@@ -156,7 +156,7 @@ function createSidebar() {
             link: '/components/scroll-container',
           },
           {
-            text: 'LazyContainer',
+            text: 'LazyContainer 区域延时加载容器',
             link: '/components/lazy-container',
           },
           {
@@ -225,7 +225,7 @@ function createSidebar() {
             link: '/components/tinymce',
           },
           {
-            text: 'Time',
+            text: 'Time 相对时间',
             link: '/components/time',
           },
           {
@@ -241,7 +241,7 @@ function createSidebar() {
             link: '/components/transition',
           },
           {
-            text: 'VirtualScroll',
+            text: 'VirtualScroll 虚拟滚动容器',
             link: '/components/virtual-scroll',
           },
         ],
