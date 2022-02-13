@@ -1,10 +1,12 @@
-# Excel 组件
+# Excel Excel表格
 
-excel 导入导出操作
 
-项目中使用到的是 XLSX，具体文档可以参考[XLSX 文档](https://sheetjs.com/)
+:::tip 温馨提示
+项目中使用到的是 XLSX，具体文档可以参考[XLSX 文档](https://docs.sheetjs.com/)
+:::tip
 
-## Import
+
+## Import 导入
 
 ### Usage
 
@@ -59,7 +61,8 @@ excel 导入导出操作
 | results: | T[];                   |        | table 数据  |
 | meta:    | { sheetName: string }; |        | table title |
 
-## Export
+
+## Export 导出
 
 具体详情可以参考完整版示例
 

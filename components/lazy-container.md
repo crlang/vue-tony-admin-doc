@@ -36,11 +36,11 @@ export default defineComponent({
 | --- | --- | ---  | --- |
 | timeout | `number` | - | 等待时间，如果指定了时间，不论可见与否，在指定时间之后自动加载 |
 | viewport | `HTMLElement` | - | 组件所在的视口，如果组件是在页面容器内滚动，视口就是该容器 |
-| threshold | `string` | `0px` | 距离多少开始预加载, css 单位 |
-| direction | `'vertical', 'horizontal'` , `vertical` | 视口的滚动方向, 可选 `vertical`垂直/`horizontal`/水平 |
-| tag | `string'` | `div` | 包裹组件的外层容器的标签名 |
-| transitionName | `string'` | lazy-container | vue 的 transition-group 动画名称 |
-| maxWaitingTime | `number'` | `120`| 最大等待时间 |
+| threshold | `string` | `0px` | 距离多少开始预加载，css 单位 |
+| direction | `string` | `vertical` | 视口的滚动方向，可选 `vertical`垂直/`horizontal`/水平 |
+| tag | `string` | `div` | 包裹组件的外层容器的标签名 |
+| transitionName | `string` | `lazy-container` | vue 的 `transition-group`组件动画名称 |
+| maxWaitingTime | `number` | `120`| 最大等待时间 |
 
 
 ## Events

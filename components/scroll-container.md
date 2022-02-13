@@ -55,7 +55,7 @@ export default defineComponent({
 
 | 名称          | 参数                             | 说明            |
 | ------------- | ------------------------------------ | --------------- |
-| getScrollWrap | `()=>HtmlElement`                  | 获取滚动容器 |
+| getScrollWrap | -                  | 获取滚动容器 |
 | scrollBottom  | -                           | 滚动到底部      |
 | scrollTo      | `(to:number,duration = 500)` | 滚动到指定位置  |
 

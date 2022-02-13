@@ -217,10 +217,6 @@ function createSidebar() {
             link: '/components/markdown',
           },
           {
-            text: 'Loading',
-            link: '/components/loading',
-          },
-          {
             text: 'Tinymce',
             link: '/components/tinymce',
           },
@@ -252,10 +248,6 @@ function createSidebar() {
           {
             text: 'ContextMenu',
             link: '/components/functional/context-menu',
-          },
-          {
-            text: 'Loading',
-            link: '/components/functional/loading',
           },
           {
             text: 'Preview',

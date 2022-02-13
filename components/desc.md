@@ -69,13 +69,6 @@ export default defineComponent({
 </script>
 ```
 
-## useDescription
-
-参考以上示例
-
-```ts
-const [register] = useDescription(Props);
-```
 
 ## Props
 

@@ -1,6 +1,9 @@
 # Drawer 抽屉
 
+:::tip 温馨提示
 对 `Element Plus` 的 `Drawer` 组件进行二次封装，**用法简洁，内容丰富**。
+:::
+
 
 ## Usage
 

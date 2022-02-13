@@ -1,5 +1,6 @@
 # StrengthMeter 校验密码强度
 
+
 ## Usage
 
 ```vue
@@ -21,11 +22,12 @@ export default defineComponent({
 
 ## Props
 
-| 属性      | 类型      | 默认值 | 可选值 | 说明           |
-| --------- | --------- | ------ | ------ | -------------- |
-| value     | `string`  | -      | -      | 校验的值       |
-| showInput | `boolean` | `true`   | -      | 是否显示 input |
-| disabled  | `boolean` | `false`  | -      | 是否禁用       |
+| 属性      | 类型      | 默认值 | 说明           |
+| --------- | --------- | ------ | -------------- |
+| value     | `string`  | -      |  校验的值       |
+| showInput | `boolean` | `true`   | 是否显示 input |
+| disabled  | `boolean` | `false`  | 是否禁用       |
+
 
 ## Events
 
