@@ -1,17 +1,15 @@
 # Modal 弹窗
 
-对 antv 的 modal 组件进行封装，扩展拖拽，全屏，自适应高度等功能
-
-代码路径 [src/components/Modal](https://github.com/crlang/vue-tony-admin/tree/main/src/components/Modal)
+:::tip 温馨提示
+对 `Element Plus` 的 Dialog 组件进行二次封装，**内容更丰富**。
+:::
 
 ## Usage
 
 **由于弹窗内代码一般作为单文件组件存在，也推荐这样做，所以示例都为单文件组件形式**
 
 ::: tip
-
 注意 `v-bind="$attrs"`记得写，用于将弹窗组件的 `attribute` 传入 `BasicModal` 组件
-
 :::
 
 ```vue

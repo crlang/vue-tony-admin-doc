@@ -1,6 +1,5 @@
-# QrCode
+# QrCode 二维码生成器
 
-用于生成二维码的组件
 
 ## Usage
 

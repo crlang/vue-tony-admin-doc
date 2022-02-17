@@ -5,6 +5,9 @@
 测试此方法需要在启动测试服务器，启动方法请看 ` 指南 -> 其它 -> 测试服务 `
 :::
 
+:::tip 温馨提示
+👉👉👉项目中使用到的是 Cropperjs，具体文档可以参考[cropperjs 文档](https://github.com/fengyuanchen/cropperjs/blob/main/README.md#options)
+:::
 
 ## CropperImage 裁剪图片
 
@@ -77,8 +80,6 @@ export default defineComponent({
   rotatable: true,
 }
 ```
-
-文档参考👉👉👉 [cropperjs 文档](https://github.com/fengyuanchen/cropperjs/blob/main/README.md#options)
 
 
 ### Events

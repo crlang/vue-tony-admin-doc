@@ -5,7 +5,7 @@ actionText: 快速开始 →
 actionLink: /guide/introduction
 
 altActionText: 在线预览
-altActionLink: https://tony.crlang.com/
+altActionLink: https://crlang.gitee.io/vue-tony-admin-site/
 
 features:
   - title: ✨ 最新技术栈
@@ -20,5 +20,5 @@ features:
     details: 完整的前后端权限方案，实现各种场景下的权限验证
   - title: 🌐 国际化
     details: 高效通用的国际化方案，只需简单配置即可实现多国语言
-footer: MIT Licensed | Copyright © 2022-至今 CRLang
+footer: MIT Licensed | Copyright © 2021-至今 CRLang
 ---

@@ -124,11 +124,11 @@ function createSidebar() {
             link: '/components/card-grid',
           },
           {
-            text: 'Page',
+            text: 'Page 页面容器',
             link: '/components/page',
           },
           {
-            text: 'Icon',
+            text: 'Icon 图标',
             link: '/components/icon',
           },
           {
@@ -144,10 +144,6 @@ function createSidebar() {
             link: '/components/table',
           },
           {
-            text: 'PopConfirmButton',
-            link: '/components/pop-confirm-button',
-          },
-          {
             text: 'CollapseContainer 区域折叠容器',
             link: '/components/collapse-container',
           },
@@ -160,14 +156,13 @@ function createSidebar() {
             link: '/components/lazy-container',
           },
           {
-            text: 'JsonPreview',
-            link: '/components/json-preview',
+            text: 'Progress 进度条',
+            link: '/components/progress',
           },
           {
             text: 'CountDown 倒计时',
             link: '/components/count-down',
           },
-
           {
             text: 'ClickOutSide 监听点击区域',
             link: '/components/click-out-side',
@@ -193,10 +188,6 @@ function createSidebar() {
             link: '/components/modal',
           },
           {
-            text: 'FlowChart',
-            link: '/components/flow-chart',
-          },
-          {
             text: 'Upload',
             link: '/components/upload',
           },
@@ -205,15 +196,15 @@ function createSidebar() {
             link: '/components/tree',
           },
           {
-            text: 'Excel',
+            text: 'Excel 导入导出',
             link: '/components/excel',
           },
           {
-            text: 'Qrcode',
+            text: 'Qrcode 二维码生成器',
             link: '/components/qrcode',
           },
           {
-            text: 'Markdown',
+            text: 'Markdown 编辑器',
             link: '/components/markdown',
           },
           {

@@ -5,17 +5,16 @@
 
 ```vue
 <template>
-  <ElConfigProvider>
-    <router-view />
-  </ElConfigProvider>
+  <CountTo />
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { ElConfigProvider } from 'element-plus';
-  export default defineComponent({
-    name: 'App',
-    components: { ElConfigProvider },
-  });
+import { defineComponent } from 'vue'
+import { CountTo } from '@/components/CountTo'
+
+export default defineComponent({
+  name: 'App',
+  components: { CountTo },
+})
 </script>
 ```
