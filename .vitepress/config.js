@@ -208,7 +208,7 @@ function createSidebar() {
             link: '/components/markdown',
           },
           {
-            text: 'Tinymce',
+            text: 'Tinymce 富文本编辑器',
             link: '/components/tinymce',
           },
           {
