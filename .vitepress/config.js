@@ -224,7 +224,7 @@ function createSidebar() {
             link: '/components/verify',
           },
           {
-            text: 'Transition',
+            text: 'Transition 页面/组件切换动画',
             link: '/components/transition',
           },
           {
