@@ -43,4 +43,4 @@ export default defineComponent({
 
 | 事件   | 参数           | 返回值 | 说明                   |
 | ------ | ------------------ | ------ | ---------------------- |
-| change | `(str:string)` |        | 富文本内容改变触发事件 |
+| change | `(value:string)` |        | 富文本内容改变触发事件 |

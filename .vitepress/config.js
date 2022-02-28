@@ -120,6 +120,10 @@ function createSidebar() {
             link: '/components/basic',
           },
           {
+            text: 'List 数据列表',
+            link: '/components/list',
+          },
+          {
             text: 'CardGrid 栅格卡片',
             link: '/components/card-grid',
           },
@@ -184,16 +188,12 @@ function createSidebar() {
             link: '/components/drawer',
           },
           {
-            text: 'Modal',
+            text: 'Modal 弹窗',
             link: '/components/modal',
           },
           {
-            text: 'Upload',
+            text: 'Upload 文件上传',
             link: '/components/upload',
-          },
-          {
-            text: 'Tree',
-            link: '/components/tree',
           },
           {
             text: 'Excel 导入导出',
@@ -220,7 +220,7 @@ function createSidebar() {
             link: '/components/strength-meter',
           },
           {
-            text: 'Verify',
+            text: 'Verify 拖动校验',
             link: '/components/verify',
           },
           {

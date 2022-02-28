@@ -49,13 +49,13 @@ export default defineComponent({
 
 | 属性       | 类型             | 默认值 | 说明               |
 | ---------- | ---------------- | ------  | ------------------ |
-| height     | `string｜number` | -       | 高度               |
-| width      | `string｜number` | -       | 宽度               |
-| maxHeight  | `string｜number` | -       | 最大高度           |
-| maxWidth   | `string｜number` | -       | 最大宽度           |
-| minHeight  | `string｜number` | -       | 最小高度           |
-| minWidth   | `string｜number` | -       | 最小宽度           |
-| itemHeight | `string｜number` | -       | 每个选项高度，必填 |
+| height     | `string/number` | -       | 高度               |
+| width      | `string/number` | -       | 宽度               |
+| maxHeight  | `string/number` | -       | 最大高度           |
+| maxWidth   | `string/number` | -       | 最大宽度           |
+| minHeight  | `string/number` | -       | 最小高度           |
+| minWidth   | `string/number` | -       | 最小宽度           |
+| itemHeight | `string/number` | -       | 每个选项高度，必填 |
 | items      | `any[]`          | -       | 选项列表           |
 
 ## Slots

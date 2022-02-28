@@ -1,71 +1,73 @@
 # Modal 弹窗
 
 :::tip 温馨提示
-对 `Element Plus` 的 Dialog 组件进行二次封装，**内容更丰富**。
+对 `Element Plus` 的 Dialog 组件进行二次封装，**内容更丰富**
+
+**由于弹窗内代码一般作为单文件组件存在，也推荐这样做，所以示例都为单文件组件形式**
 :::
 
 ## Usage
 
-**由于弹窗内代码一般作为单文件组件存在，也推荐这样做，所以示例都为单文件组件形式**
-
-::: tip
-注意 `v-bind="$attrs"`记得写，用于将弹窗组件的 `attribute` 传入 `BasicModal` 组件
-:::
-
+**Modal.vue**
 ```vue
-// Modal.vue
 <template>
-  <BasicModal v-bind="$attrs" title="Modal Title" :helpMessage="['提示1', '提示2']">
-    Modal Info.
+  <BasicModal v-bind="$attrs" title="Modal Title" @register="register" :helpMessage="['提示1', '提示2']">
+    Modal Info. <Button @click="closeModal()">内部操作关闭</Button>
   </BasicModal>
 </template>
+
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { BasicModal } from '@/components/Modal';
-  export default defineComponent({
-    components: { BasicModal },
-    setup() {
-      return {};
-    },
-  });
+import { defineComponent } from 'vue'
+import { BasicModal, useModalInner } from '@/components/Modal'
+export default defineComponent({
+  components: { BasicModal },
+  setup() {
+    const [register, { closeModal }] = useModalInner()
+
+    return { register, closeModal }
+  },
+})
 </script>
 ```
 
 **页面引用弹窗**
-
 ```vue
-// Page.vue
 <template>
-  <div class="px-10">
-    <Modal @register="register" />
-  </div>
+  <Modal @register="register" />
 </template>
+
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { useModal } from '@/components/Modal';
-  import Modal from './Modal.vue';
-  export default defineComponent({
-    components: { Modal },
-    setup() {
-      const [register, { openModal }] = useModal();
-      return {
-        register,
-        openModal,
-      };
-    },
-  });
+import { defineComponent } from 'vue'
+import { useModal } from '@/components/Modal'
+import Modal from './Modal.vue'
+export default defineComponent({
+  components: { Modal },
+  setup() {
+    const [register, { openModal }] = useModal()
+    return {
+      register,
+      openModal,
+    }
+  },
+})
 </script>
 ```
 
-## useModal
+
+### useModal()
 
 用于外部组件调用
 
-**useModal** 用于操作组件
+<details>
+<summary>展开查看更多</summary>
 
 ```ts
-const [register, { openModal, setModalProps }] = useModal();
+const [register, { openModal, setModalProps }] = useModal()
 ```
+
+**useModal**
+
+用于操作组件
 
 **register**
 
@@ -75,20 +77,14 @@ register 用于注册 `useModal`，如果需要使用 `useModal` 提供的 api�
 
 同时独立出去的组件需要将 `attrs` 绑定到 `BasicModal` 上面。
 
-```vue
-<template>
-  <BasicModal v-bind="$attrs"></BasicModal>
-</template>
-```
-
 **openModal**
 
 用于打开/关闭弹窗
 
-```tsx
+```ts
 // true/false: 打开关闭弹窗
 // data: 传递到子组件的数据
-openModal(true, data);
+openModal(true, data)
 ```
 
 **closeModal**
@@ -96,7 +92,7 @@ openModal(true, data);
 用于关闭弹窗
 
 ```ts
-closeModal();
+closeModal()
 ```
 
 **setModalProps**
@@ -106,51 +102,25 @@ closeModal();
 [Props](#Props) 内容可以见下方
 
 ```ts
-setModalProps(props);
+setModalProps(props)
 ```
 
-## useModalInner
+</details>
+
+
+## useModalInner()
 
 用于独立的 Modal 内部调用
 
-### Usage
+<details>
+<summary>展开查看更多</summary>
 
-```vue
-<template>
-  <BasicModal
-    v-bind="$attrs"
-    @register="register"
-    title="Modal Title"
-    :helpMessage="['提示1', '提示2']"
-  >
-    <a-button type="primary" @click="closeModal" class="mr-2">从内部关闭弹窗</a-button>
+**useModalInner**
 
-    <a-button type="primary" @click="setModalProps">从内部修改title</a-button>
-  </BasicModal>
-</template>
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { BasicModal, useModalInner } from '@/components/Modal';
-  export default defineComponent({
-    components: { BasicModal },
-    setup() {
-      const [register, { closeModal, setModalProps }] = useModalInner();
-      return {
-        register,
-        closeModal,
-        setModalProps: () => {
-          setModalProps({ title: 'Modal New Title' });
-        },
-      };
-    },
-  });
-</script>
-```
-
-**useModalInner**用于操作独立组件
+用于操作独立组件
 
 ```ts
-const [register, { closeModal, setModalProps }] = useModalInner(callback);
+const [register, { closeModal, setModalProps }] = useModalInner(callback)
 ```
 
 **callback**
@@ -161,8 +131,8 @@ type: `(data:any)=>void`
 
 ```ts
 useModal((data: any) => {
-  console.log(data);
-});
+  console.table(data)
+})
 ```
 
 **closeModal**
@@ -170,15 +140,15 @@ useModal((data: any) => {
 用于关闭弹窗
 
 ```ts
-closeModal();
+closeModal()
 ```
 
-**changeOkLoading**
+**changeConfirmLoading**
 
 用于修改确认按钮的 loading 状态
 
 ```ts
-changeOkLoading(true);
+changeOkLoading(true)
 ```
 
 **changeLoading**
@@ -186,8 +156,7 @@ changeOkLoading(true);
 用于修改 modal 的 loading 状态
 
 ```tsx
-// true or false
-changeLoading(true);
+changeLoading(true)
 ```
 
 **setModalProps**
@@ -196,48 +165,60 @@ changeLoading(true);
 
 [Props](#Props) 内容可以见下方
 
+```ts
+setModalProps(props)
+```
+
+</details>
+
+
 ## Props
 
-::: tip
+::: tip 温馨提示
 
-除以下参数外，组件库文档内的 props 也都支持，具体可以参考 [antv modal](https://2x.antdv.com/components/modal-cn/#API)
+- **保持** [Element Plus Dialog 组件](https://element-plus.gitee.io/zh-CN/component/dialog.html) **原有功能**的情况下扩展以下属性
 
 :::
 
-| 属性 | 类型 | 默认值 | 可选值 | 说明 |
-| --- | --- | --- | --- | --- |
-| title | `string` | - | - | modal 标题 |
-| height | `number` | - | - | 固定 modal 的高度 |
-| minHeight | `number` | - | - | 设置 modal 的最小高度 |
-| draggable | `boolean` | true | true/false | 是否开启拖拽 |
-| useWrapper | `boolean` | true | true/false | 是否开启自适应高度，开启后会跟随屏幕变化自适应内容，并出现滚动条 |
-| wrapperFooterOffset | `number` | 0 | - | 开启是适应高度后，如果超过屏幕高度，底部和顶部会保持一样的间距，该参数可以用来缩小底部的间距 |
-| canFullscreen | `boolean` | true | true/false | 是否可以进行全屏 |
-| defaultFullscreen | `boolean` | false | true/false | 默认全屏 |
-| loading | `boolean` | false | true/false | loading 状态 |
-| loadingTip | `string` | - | - | loading 文本 |
-| showCancelBtn | `boolean` | true | true/false | 显示关闭按钮 |
-| showOkBtn | `boolean` | true | true/false | 显示确认按钮 |
-| helpMessage | `string , string[]` | - | - | 标题右侧提示文本 |
-| centered | `boolean` | false | true/false | 是否居中弹窗 |
-| cancelText | `string` | '关闭' | - | 关闭按钮文本 |
-| okText | `string` | '保存' | - | 确认按钮文本 |
-| closeFunc | `() => Promise<boolean>` | 关闭函数 | - | 关闭前执行，返回 true 则关闭，否则不关闭 |
+| 属性 | 类型 | 默认值  | 说明 |
+| --- | --- | --- | ---|
+| scrollTop | `string` | - | 是否关闭后滚回顶部 |
+| showClose | `boolean` | `true` | 是否显示关闭图标 |
+| showFullscreen | `boolean` | `true` | 是否显示全屏图标 |
+| helpMessage | `string/string[]` | -  | 标题右侧提示文本 |
+| draggable | `boolean` | `true`  | 是否开启拖拽 |
+| useWrapper | `boolean` | `true`  | 是否开启自适应高度，开启后会跟随屏幕变化自适应内容，并出现滚动条 |
+| footerOffset | `number` | `0`  | 开启是适应高度后，如果超过屏幕高度，底部和顶部会保持一样的间距，该参数可以用来缩小底部的间距 |
+| loading | `boolean` | `false` | 是否显示 loading |
+| loadingTip | `string` | `加载中` | loading 文本 |
+| modalHeaderHeight | `number` | `56` | 模块的头部高度 |
+| modalFooterHeight | `number` | `70` | 模块的脚部高度 |
+| showFooter | `boolean` | true | 显示关闭按钮 |
+| showCancel | `boolean` | true | 显示关闭按钮 |
+| cancelText | `string` | `取消` | 取消按钮文本 |
+| cancelButton | `object` | - | 取消按钮属性，参考 ElButton |
+| showConfirm | `boolean` | `true`  | 是否显示确认按钮 |
+| confirmText | `string` | `确认` | 确认文本 |
+| confirmButton | `object` | -  | 确认按钮属性，参考 ElButton |
+| closeFunc | `() => Promise<boolean>` |   | 关闭函数，关闭前执行，返回 true 则关闭，否则不关闭 |
+
 
 ## Events
 
 | 事件           | 回调参数                | 说明             |
 | -------------- | ----------------------- | ---------------- |
-| ok             | `function(e)`           | 点击确定回调     |
-| cancel         | `function(e)`           | 点击取消回调     |
-| visible-change | `(visible:boolean)=>{}` | 打开或者关闭触发 |
+| ok             | -           | 点击确定回调     |
+| cancel         | -           | 点击取消回调     |
+| visible-change | `(visible:boolean)` | 打开或者关闭触发 |
+
 
 ## Slots
 
 | 名称    | 说明     |
 | ------- | -------- |
 | default | 默认区域 |
-| footer | 底部区域(会替换掉默认的按钮) |
-|insertFooter|关闭按钮的左边(不使用footer插槽时有效) |
-|centerFooter| 关闭按钮和确认按钮的中间(不使用footer插槽时有效) |
-|appendFooter| 确认按钮的右边(不使用footer插槽时有效) |
+| title |头部标题区域 |
+| footer | 底部区域 |
+|insertFooter|关闭按钮的左边（不使用footer插槽时有效，下同） |
+|centerFooter| 关闭按钮和确认按钮的中间 |
+|appendFooter| 确认按钮的右边 |
