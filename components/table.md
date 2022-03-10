@@ -1,12 +1,13 @@
 # Table 表格
 
-对 `Element Plus` 的 table 组件进行封装
+:::tip 温馨提示
+对 `Element Plus` 的 `Table` 组件进行二次封装，**用法简洁，功能丰富**。
+:::
 
-> 如果文档内没有，可以尝试在在线示例内寻找
 
 ## Usage
 
-### 示例
+### 基础示例
 
 ```vue
 <template>
@@ -15,35 +16,72 @@
       title="基础示例"
       titleHelpMessage="温馨提醒"
       :columns="columns"
-      :dataSource="data"
-      :canResize="canResize"
       :loading="loading"
-      :striped="striped"
-      :bordered="border"
-      :pagination="{ pageSize: 20 }"
-    >
+      :api="demoListApi"
+      :pagination="{ pageSize: 20 }">
       <template #toolbar>
-        <a-button type="primary"> 操作按钮 </a-button>
+        <el-button @click="changeLoading"> 操作按钮 </el-button>
       </template>
     </BasicTable>
   </div>
 </template>
-<script lang="ts">
-  import { defineComponent, ref } from 'vue';
-  import { BasicTable } from '@/components/Table';
-  import { getBasicColumns, getBasicData } from './tableData';
 
-  export default defineComponent({
-    components: { BasicTable },
-    setup() {
-      return {
-        columns: getBasicColumns(),
-        data: getBasicData(),
-      };
-    },
-  });
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+import { ElButton } from 'element-plus'
+import { BasicTable } from '@/components/Table'
+import { demoListApi } from '@/api/demo/table'
+
+export default defineComponent({
+  components: { ElButton, BasicTable },
+  setup() {
+    const loading = ref(false)
+    const columns = [
+      {
+        label: 'ID',
+        prop: 'id',
+        width: 150,
+      },
+      {
+        label: '姓名',
+        prop: 'name',
+        filters: [
+          { text: 'Male', value: 'male' },
+          { text: 'Female', value: 'female' },
+        ],
+      },
+      {
+        actions: [
+          {
+            text: '查看',
+            callback: handleView,
+          },
+        ],
+      },
+    ]
+
+    function changeLoading() {
+      loading.value = true
+      setTimeout(() => {
+        loading.value = false
+      }, 1000)
+    }
+
+    function handleView(scope) {
+      console.table('view ', scope)
+    }
+
+    return {
+      loading,
+      demoListApi,
+      columns,
+      changeLoading,
+    }
+  },
+})
 </script>
 ```
+
 
 ### template 示例
 
@@ -57,234 +95,242 @@
       title="RefTable示例"
       titleHelpMessage="使用Ref调用表格内方法"
       ref="tableRef"
-      :api="api"
+      :api="demoListApi"
       :columns="columns"
       rowKey="id"
-      :rowSelection="{ type: 'checkbox' }"
-    />
-  </div>
-</template>
-<script lang="ts">
-  import { defineComponent, ref, unref } from 'vue';
-  import { BasicTable, TableActionType } from '@/components/Table';
-  import { getBasicColumns, getBasicShortColumns } from './tableData';
-  import { demoListApi } from '@/api/demo/table';
-  export default defineComponent({
-    components: { BasicTable },
-    setup() {
-      const tableRef = ref<Nullable<TableActionType>>(null);
-
-      function getTableAction() {
-        const tableAction = unref(tableRef);
-        if (!tableAction) {
-          throw new Error('tableAction is null');
-        }
-        return tableAction;
-      }
-      function changeLoading() {
-        getTableAction().setLoading(true);
-        setTimeout(() => {
-          getTableAction().setLoading(false);
-        }, 1000);
-      }
-      return {
-        tableRef,
-        api: demoListApi,
-        columns: getBasicColumns(),
-        changeLoading,
-      };
-    },
-  });
-</script>
-```
-
-### BasicColumn 和 tableAction 通过权限和业务控制显示隐藏的示例
-```vue
-<template>
-  <div class="p-4">
-    <BasicTable @register="registerTable">
-      <template #action="{ record }">
-        <TableAction
-          :actions="[
-            {
-              label: '编辑',
-              onClick: handleEdit.bind(null, record),
-              auth: 'other', // 根据权限控制是否显示: 无权限，不显示
-            },
-            {
-              label: '删除',
-              icon: 'ic:outline-delete-outline',
-              onClick: handleDelete.bind(null, record),
-              auth: 'super', // 根据权限控制是否显示: 有权限，会显示
-            },
-          ]"
-          :dropDownActions="[
-            {
-              label: '启用',
-              popConfirm: {
-                title: '是否启用？',
-                confirm: handleOpen.bind(null, record),
-              },
-              ifShow: (_action) => {
-                return record.status !== 'enable'; // 根据业务控制是否显示: 非enable状态的不显示启用按钮
-              },
-            },
-            {
-              label: '禁用',
-              popConfirm: {
-                title: '是否禁用？',
-                confirm: handleOpen.bind(null, record),
-              },
-              ifShow: () => {
-                return record.status === 'enable'; // 根据业务控制是否显示: enable状态的显示禁用按钮
-              },
-            },
-            {
-              label: '同时控制',
-              popConfirm: {
-                title: '是否动态显示？',
-                confirm: handleOpen.bind(null, record),
-              },
-              auth: 'super', // 同时根据权限和业务控制是否显示
-              ifShow: () => {
-                return true; // 根据业务控制是否显示
-              },
-            },
-          ]"
-        />
+      :rowSelection="{ type: 'checkbox' }">
+      <template #toolbar>
+        <el-button @click="changeLoading"> 操作按钮 </el-button>
       </template>
     </BasicTable>
   </div>
 </template>
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { BasicTable, useTable, BasicColumn, TableAction } from '@/components/Table';
 
-  import { demoListApi } from '@/api/demo/table';
-  const columns: BasicColumn[] = [
-    {
-      title: '姓名',
-      dataIndex: 'name',
-      auth: 'test', // 根据权限控制是否显示: 无权限，不显示
-    },
-    {
-      title: '地址',
-      dataIndex: 'address',
-      auth: 'super', // 同时根据权限控制是否显示
-      ifShow: (_column) => {
-        return true; // 根据业务控制是否显示
+<script lang="ts">
+import { defineComponent, ref, unref } from 'vue'
+import { ElButton } from 'element-plus'
+import { BasicTable, TableActionType } from '@/components/Table'
+import { demoListApi } from '@/api/demo/table'
+
+export default defineComponent({
+  components: { ElButton, BasicTable },
+  setup() {
+    const tableRef = ref<Nullable<TableActionType>>(null)
+    const columns = [
+      {
+        label: 'ID',
+        prop: 'id',
+        width: 150,
       },
-    },
-  ];
-  export default defineComponent({
-    components: { BasicTable, TableAction },
-    setup() {
-      const [registerTable] = useTable({
-        title: 'TableAction组件及固定列示例',
-        api: demoListApi,
-        columns: columns,
-        bordered: true,
-        actionColumn: {
-          width: 250,
-          title: 'Action',
-          dataIndex: 'action',
-          slots: { customRender: 'action' },
-        },
-      });
-      function handleEdit(record: Recordable) {
-        console.log('点击了编辑', record);
+      {
+        label: '姓名',
+        prop: 'name',
+        filters: [
+          { text: 'Male', value: 'male' },
+          { text: 'Female', value: 'female' },
+        ],
+      },
+    ]
+
+    function getTableAction() {
+      const tableAction = unref(tableRef)
+      if (!tableAction) {
+        throw new Error('tableAction is null')
       }
-      function handleDelete(record: Recordable) {
-        console.log('点击了删除', record);
-      }
-      function handleOpen(record: Recordable) {
-        console.log('点击了启用', record);
-      }
-      return {
-        registerTable,
-        handleEdit,
-        handleDelete,
-        handleOpen,
-      };
-    },
-  });
+      return tableAction
+    }
+    function changeLoading() {
+      getTableAction().setLoading(true)
+      setTimeout(() => {
+        getTableAction().setLoading(false)
+      }, 1000)
+    }
+    return {
+      tableRef,
+      demoListApi,
+      columns,
+      changeLoading,
+    }
+  },
+})
 </script>
 ```
 
 
-## useTable
+### 通过权限和业务控制显示隐藏的示例
+```vue
+<template>
+  <div class="p-4">
+    <BasicTable @register="registerTable" />
+  </div>
+</template>
 
-使用组件自带的 **useTable** 可以方便使用表单
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { BasicTable, useTable, BasicColumn } from '@/components/Table'
+import { demoListApi } from '@/api/demo/table'
 
-下面是一个使用简单表格的示例，
+export default defineComponent({
+  components: { BasicTable },
+  setup() {
+    const columns: BasicColumn[] = [
+      {
+        label: '编号',
+        prop: 'no',
+        width: 100,
+      },
+      {
+        label: '姓名',
+        prop: 'name',
+        auth: 'test', // 根据权限控制是否显示: 无权限，不显示
+      },
+      {
+        label: '地址',
+        prop: 'address',
+        auth: 'admin', // 同时根据权限和业务控制是否显示
+        // ifShow: true,
+      },
+      {
+        actions: [
+          {
+            text: '启用',
+            callback: handleOpen,
+          },
+          {
+            text: '编辑',
+            callback: handleEdit,
+            auth: 'test', // 根据权限控制是否显示: 无权限，不显示
+          },
+          {
+            text: '删除',
+            callback: handleDelete,
+            auth: 'super', // 根据权限控制是否显示: 有权限，会显示
+          },
+        ],
+      },
+    ]
+
+    const [registerTable] = useTable({
+      title: 'TableAction组件及固定列示例',
+      api: demoListApi,
+      columns: columns,
+      border: true,
+    })
+
+    function handleEdit(record: Recordable) {
+      console.log('点击了编辑', record)
+    }
+
+    function handleDelete(record: Recordable) {
+      console.log('点击了删除', record)
+    }
+    function handleOpen(record: Recordable) {
+      console.log('点击了启用', record)
+    }
+
+    return {
+      registerTable,
+      handleEdit,
+      handleDelete,
+      handleOpen,
+    }
+  },
+})
+</script>
+```
+
+
+## useTable()
+
+使用组件自带的 **useTable** 可以方便使用表格
+
 
 ```vue
 <template>
-  <BasicTable @register="registerTable" />
+  <div class="p-4">
+    <el-button @click="changeLoading()"> 操作按钮 </el-button>
+    <BasicTable @register="registerTable" />
+  </div>
 </template>
-<script lang="ts">
-  import { defineComponent } from 'vue';
-  import { BasicTable, useTable } from '@/components/Table';
-  import { getBasicColumns, getBasicShortColumns } from './tableData';
-  import { demoListApi } from '@/api/demo/table';
-  export default defineComponent({
-    components: { BasicTable },
-    setup() {
-      const [
-        registerTable,
-        {
-          setLoading,
-        },
-      ] = useTable({
-        api: demoListApi,
-        columns: getBasicColumns(),
-      });
 
-      function changeLoading() {
-        setLoading(true);
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-      }
-      }
-      return {
-        registerTable,
-        changeLoading,
-      };
-    },
-  });
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { ElButton } from 'element-plus'
+import { BasicTable, useTable } from '@/components/Table'
+import { demoListApi } from '@/api/demo/table'
+
+export default defineComponent({
+  components: { ElButton, BasicTable },
+  setup() {
+    const columns = [
+      {
+        label: 'ID',
+        prop: 'id',
+      },
+      {
+        actions: [
+          {
+            text: '查看',
+            callback: handleView,
+          },
+        ],
+      },
+    ]
+
+    const [registerTable, { setLoading }] = useTable({
+      api: demoListApi,
+      columns,
+    })
+
+    function changeLoading() {
+      setLoading(true)
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000)
+    }
+
+    function handleView(scope) {
+      console.table('view ', scope)
+    }
+
+    return {
+      registerTable,
+      changeLoading,
+    }
+  },
+})
 </script>
 ```
+
 
 ### Usage
 
+:::tip 温馨提示
 用于调用 Table 内部方法及 table 参数配置
 
+表格的 props 也可以直接注册到 useTable 内部
+
+:::
+
+示例如下
 ```ts
-// 表格的props也可以直接注册到useTable内部
 const [register, methods] = useTable(props);
 ```
 
-**register**
+### register
 
 register 用于注册 useTable，如果需要使用`useTable`提供的 api，必须将 register 传入组件的 onRegister
 
-```vue
-<template>
-  <BasicTable @register="register" />
-</template>
-<script>
-  export default defineComponent({
-    components: { BasicForm },
-    setup() {
-      const [register] = useTable();
-      return { register };
-    },
-  });
-</script>
-```
 
 ### Methods
+
+methods 里面支持以下方法
+
+
+| 属性           | 参数                   | 说明                                 |
+| -------------- | -------------------- | ------------------------------------ |
+| isDetail       | `boolean`           | 是否为详情模式                       |
+
 
 **setProps**
 
@@ -446,14 +492,15 @@ register 用于注册 useTable，如果需要使用`useTable`提供的 api，必
 
 说明: 折叠树形表格
 
+
 ## Props
 
-::: tip 温馨提醒
+::: tip 温馨提示
 
-- 除以下参数外，官方文档内的 props 也都支持，具体可以参考 [antv table](https://2x.antdv.com/components/table-cn/#API)
-- 注意：`defaultExpandAllRows`、`defaultExpandedRowKeys` 属性在basicTable中不受支持，并且在`antv table` v2.2.0之后也被移除。
+- **保持** [Element Plus Table 组件](https://element-plus.gitee.io/zh-CN/component/table.html) **原有功能**的情况下扩展以下属性
 
 :::
+
 
 | 属性                    | 类型                                               | 默认值  | 可选值 | 说明                                                                                            | 版本 |
 | ----------------------- | -------------------------------------------------- | ------- | ------ | ----------------------------------------------------------------------------------------------- | ---- |
