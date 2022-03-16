@@ -326,171 +326,50 @@ register 用于注册 useTable，如果需要使用`useTable`提供的 api，必
 
 methods 里面支持以下方法
 
-
 | 属性           | 参数                   | 说明                                 |
 | -------------- | -------------------- | ------------------------------------ |
-| isDetail       | `boolean`           | 是否为详情模式                       |
-
-
-**setProps**
-
-类型：`(props: Partial<BasicTableProps>) => void`
-
-说明: 用于设置表格参数
-
-**reload**
-
-类型：`(opt?: FetchParams) => Promise<void>`
-
-说明: 刷新表格
-
-**redoHeight**
-
-类型：`() => void`
-
-说明: 重新计算表格高度
-
-**setLoading**
-
-类型：`(loading: boolean) => void`
-
-说明: 设置表格 loading 状态
-
-**getDataSource**
-
-获取表格数据
-
-类型：`<T = Recordable>() => T[]`
-
-说明: 获取表格数据
-
-**getRawDataSource**
-
-获取后端接口原始数据
-
-类型：`<T = Recordable>() => T`
-
-说明: 获取后端接口原始数据
-
-**getColumns**
-
-类型：`(opt?: GetColumnsParams) => BasicColumn[]`
-
-说明: 获取表格数据
-
-**setColumns**
-
-类型：`(columns: BasicColumn[] | string[]) => void`
-
-说明: 设置表头数据
-
-**setTableData**
-
-类型：`<T = Recordable>(values: T[]) => void`
-
-说明: 设置表格数据
-
-**setPagination**
-
-类型：`(info: Partial<PaginationProps>) => void`
-
-说明: 设置分页信息
-
-**deleteSelectRowByKey**
-
-类型：`(key: string) => void`
-
-说明: 根据 key 删除取消选中行
-
-**getSelectRowKeys**
-
-类型：`() => string[]`
-
-说明: 获取选中行的 keys
-
-**getSelectRows**
-
-类型：`<T = Recordable>() => T[]`
-
-说明: 获取选中行的 rows
-
-**clearSelectedRowKeys**
-
-类型：`() => void`
-
-说明: 清空选中行
-
-**setSelectedRowKeys**
-
-类型：`(rowKeys: string[] | number[]) => void`
-
-说明: 设置选中行
-
-**getPaginationRef**
-
-类型：`() => PaginationProps | boolean`
-
-说明: 获取当前分页信息
-
-**getShowPagination**
-
-类型：`() => boolean`
-
-说明: 获取当前是否显示分页
-
-**setShowPagination**
-
-类型：`(show: boolean) => Promise<void>`
-
-说明: 设置当前是否显示分页
-
-**getRowSelection**
-
-类型：`() => TableRowSelection<Recordable>`
-
-说明: 获取勾选框信息
-
-**updateTableData**
-
-类型：`(index: number, key: string, value: any)=>void`
-
-说明: 更新表格数据
-
-**updateTableDataRecord**
-
-类型： `(rowKey: string | number, record: Recordable) => Recordable | void`
-
-说明： 根据唯一的 `rowKey` 更新指定行的数据.可用于不刷新整个表格而局部更新数据
-
-**deleteTableDataRecord**
-
-类型： `(rowKey: string | number | string[] | number[]) => void`
-
-说明： 根据唯一的`rowKey` 动态删除指定行的数据.可用于不刷新整个表格而局部更新数据
-
-**insertTableDataRecord**
-
-类型： `(record: Recordable, index?: number) => Recordable | void`
-
-说明： 可根据传入的 `index` 值决定插入数据行的位置，不传则是顺序插入，可用于不刷新整个表格而局部更新数据
-
-**getForm**
-
-类型：`() => FormActionType`
-
-说明: 如果开启了搜索区域。可以通过该函数获取表单对象函数进行操作
-
-**expandAll**
-
-类型：`() => void`
-
-说明: 展开树形表格
-
-**collapseAll**
-
-类型：`() => void`
-
-说明: 折叠树形表格
+| reload       | -           | 刷新表格                       |
+| setProps       | `(props:object)`           | 用于设置表格参数                       |
+| getColumns       | -           | 获取表头数据                       |
+| setColumns       | `(column:array)`           | 设置表头数据                       |
+| setLoading       | `(loading:boolean)`           | 设置表格 loading 状态                       |
+| getDataSource       | -           | 获取表格数据                       |
+| getRawDataSource       | -           | 获取后端接口原始数据                       |
+| setTableData       | `(record:array)`           | 设置表格数据                       |
+| getCacheColumns       | -           | 获取缓存的表头数据                       |
+| redoHeight       | -           | 重新计算表格高度                       |
+| setPagination       | `(paginationInfo:object)`           | 设置分页信息，分页配置参考`El  Pagination`                     |
+| getPagination       | -           | 获取当前分页信息                       |
+| getFormRef       | -           |  如果开启了搜索区域。可以通过该函数获取表单对象 |
+| expandAll       | -           | 展开树形表格                       |
+| collapseAll       | -           | 折叠树形表格                       |
+| deleteTableDataRecord       | `(record:object\|array)`           | 动态删除指定行的数据 |
+| insertTableDataRecord       | `(record:object\|array,index:number)`           | 根据传入的 `index` 值决定插入数据行的位置，不传则是顺序插入  |
+| updateTableDataRecord       | `(rowkey:string,record:object)`           | 更新指定行的数据 |
+| findTableDataRecord       | `(rowkey)`           | 获取指定行的数据 |
+| updateTableData       | `(index:number,key:string,value:object)`           | 更新表格数据 |
+
+:::tip 温馨提示
+官方以下方法均已支持
+
+> clearSelection -> 多选，清空用户选择
+
+> toggleRowSelection -> 切换用户选择
+
+> toggleAllSelection -> 全选、取消全选
+
+> toggleRowExpansion -> 展开、收起展开表格
+
+> setCurrentRow -> 单选，高亮当前选择
+
+> clearSort -> 清空排序信息
+
+> clearFilter -> 清除筛选信息
+
+> doLayout -> 重新加载表格布局，通常用于表格列改变后执行
+
+> sort -> 根据 prop 排序
+:::
 
 
 ## Props
@@ -582,19 +461,6 @@ methods 里面支持以下方法
 | auth               | `RoleEnum` ｜ `RoleEnum[]` ｜ `string` ｜ `string[]`       | -       | -      | 根据权限编码来控制当前列是否显示    |
 | ifShow             | `boolean ｜ ((action: ActionItem) => boolean)`            | -       | -      | 根据业务状态来控制当前列是否显示    |
 
-### EditComponentType
-
-```ts
-export type ComponentType =
-  | 'Input'
-  | 'InputNumber'
-  | 'Select'
-  | 'ApiSelect'
-  | 'Checkbox'
-  | 'Switch'
-  | 'DatePicker'  // v2.5.0 以上
-  | 'TimePicker'; // v2.5.0 以上
-```
 
 ### CellFormat
 
