@@ -46,10 +46,11 @@ export default defineComponent({
 
 | 名称          | 说明                |
 | ------------- | ------------------- |
+| title | 头部标题区域 |
+| description | 头部描述区域 |
+| extra | 头部描述下方拓展区域 |
+| toolbar | 头部右侧区域 |
 | footer       | 底部区域，此具有高优先级 |
 | leftFooter    | 底部左侧区域 |
 | rightFooter   | 底部右侧区域 |
-| title | 头部标题区域 |
-| description | 头部描述区域 |
-| extra | 头部拓展区域 |
 | default       | 主体区域            |

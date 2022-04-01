@@ -1,6 +1,12 @@
 # Excel 表格导入导出
 
 
+
+:::danger 注意
+`Excel` 组件已在框架中移除，组件将独立在分支中，如需要此示例组件，请切换分支到 `Excel`
+:::
+
+
 :::tip 温馨提示
 👉👉👉项目中使用到的是 XLSX，具体文档可以参考[XLSX 文档](https://docs.sheetjs.com/)
 :::
