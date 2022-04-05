@@ -63,20 +63,24 @@ function createNav() {
       link: '/components/',
       items: [
         {
-          text: '介绍',
-          link: '/components/introduction',
-        },
-        {
           text: '全局组件',
-          link: '/components/glob/button',
+          link: '/components/glob/introduction',
         },
         {
-          text: '常用组件',
-          link: '/components/basic',
+          text: '核心组件',
+          link: '/components/core/introduction',
+        },
+        {
+          text: '拓展组件',
+          link: '/components/extend/introduction',
         },
         {
           text: '函数式组件',
-          link: '/components/functional/context-menu',
+          link: '/components/functional/introduction',
+        },
+        {
+          text: '常用组件(旧)',
+          link: '/components/basic',
         },
       ],
     },
@@ -107,8 +111,38 @@ function createSidebar() {
         text: '全局组件',
         children: [
           {
+            text: '前言',
+            link: '/components/glob/introduction',
+          },
+          {
             text: 'Button 自定义按钮',
             link: '/components/glob/button',
+          },
+        ],
+      },
+      {
+        text: '核心组件',
+        children: [
+          {
+            text: '前言',
+            link: '/components/core/introduction',
+          },
+          {
+            text: 'Button 自定义按钮',
+            link: '/components/glob/button',
+          },
+        ],
+      },
+      {
+        text: '拓展组件',
+        children: [
+          {
+            text: '前言',
+            link: '/components/extend/introduction',
+          },
+          {
+            text: 'Tinymce 富文本编辑器',
+            link: '/components/extend/tinymce',
           },
         ],
       },
@@ -208,10 +242,6 @@ function createSidebar() {
             link: '/components/markdown',
           },
           {
-            text: 'Tinymce 富文本编辑器',
-            link: '/components/tinymce',
-          },
-          {
             text: 'Time 相对时间',
             link: '/components/time',
           },
@@ -236,6 +266,10 @@ function createSidebar() {
       {
         text: '函数式组件',
         children: [
+          {
+            text: '前言',
+            link: '/components/functional/introduction',
+          },
           {
             text: 'ContextMenu',
             link: '/components/functional/context-menu',
