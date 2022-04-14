@@ -64,7 +64,7 @@ function createNav() {
       items: [
         {
           text: '全局组件',
-          link: '/components/glob/introduction',
+          link: '/components/global/introduction',
         },
         {
           text: '核心组件',
@@ -112,11 +112,11 @@ function createSidebar() {
         children: [
           {
             text: '前言',
-            link: '/components/glob/introduction',
+            link: '/components/global/introduction',
           },
           {
             text: 'Button 自定义按钮',
-            link: '/components/glob/button',
+            link: '/components/global/button',
           },
         ],
       },
@@ -127,10 +127,10 @@ function createSidebar() {
             text: '前言',
             link: '/components/core/introduction',
           },
-          {
-            text: 'Button 自定义按钮',
-            link: '/components/glob/button',
-          },
+          // {
+          //   text: 'Button 自定义按钮',
+          //   link: '/components/global/button',
+          // },
         ],
       },
       {
@@ -143,6 +143,18 @@ function createSidebar() {
           {
             text: 'Tinymce 富文本编辑器',
             link: '/components/extend/tinymce',
+          },
+          {
+            text: 'Markdown 编辑器',
+            link: '/components/extend/markdown',
+          },
+          {
+            text: 'QrCode 二维码生成器',
+            link: '/components/extend/qrcode',
+          },
+          {
+            text: 'Excel 表格导入导出',
+            link: '/components/extend/excel',
           },
         ],
       },
@@ -228,18 +240,6 @@ function createSidebar() {
           {
             text: 'Upload 文件上传',
             link: '/components/upload',
-          },
-          {
-            text: 'Excel 导入导出',
-            link: '/components/excel',
-          },
-          {
-            text: 'Qrcode 二维码生成器',
-            link: '/components/qrcode',
-          },
-          {
-            text: 'Markdown 编辑器',
-            link: '/components/markdown',
           },
           {
             text: 'Time 相对时间',

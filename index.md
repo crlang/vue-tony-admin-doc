@@ -5,7 +5,7 @@ actionText: 快速开始 →
 actionLink: /guide/introduction
 
 altActionText: 在线预览
-altActionLink: https://crlang.gitee.io/vue-tony-admin-site/
+altActionLink: https://tony.crlang.com/vue-tony-admin-site
 
 features:
   - title: ✨ 最新技术栈

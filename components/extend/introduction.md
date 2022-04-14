@@ -12,3 +12,10 @@
 
 ### Markdown
 [Markdown 编辑器](./markdown.md)
+
+### QrCode
+[QrCode 二维码生成器](./qrcode.md)
+
+
+### Excel 表格导入导出
+[Excel ](./excel.md)
