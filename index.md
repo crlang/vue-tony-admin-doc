@@ -8,7 +8,7 @@ altActionText: 在线预览
 altActionLink: https://tony.crlang.com/vue-tony-admin-site
 
 features:
-  - title: ✨ 最新技术栈
+  - title: 🎉 最新技术栈
     details: 基于 Vue3、Vite2、TypeScript 等最新技术栈开发
   - title: 🧪 场景丰富
     details: 丰富易用的真实场景示例，开发人员可直接应用于项目中
