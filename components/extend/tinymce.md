@@ -14,19 +14,19 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, ref } from 'vue';
-  import { Tinymce } from '@/components/Tinymce';
+import { defineComponent, ref } from 'vue'
+import { Tinymce } from '@/components/Tinymce'
 
-  export default defineComponent({
-    components: { Tinymce },
-    setup() {
-      const value = ref('hello world!');
-      function handleChange(value: string) {
-        console.table(value);
-      }
-      return { handleChange, value };
-    },
-  });
+export default defineComponent({
+  components: { Tinymce },
+  setup() {
+    const value = ref('hello world!')
+    function handleChange(value: string) {
+      console.table(value)
+    }
+    return { handleChange, value }
+  }
+})
 </script>
 ```
 

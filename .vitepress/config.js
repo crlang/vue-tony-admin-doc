@@ -67,7 +67,7 @@ function createNav() {
           link: '/components/global/introduction',
         },
         {
-          text: '核心组件',
+          text: '基础组件',
           link: '/components/core/introduction',
         },
         {
@@ -121,16 +121,16 @@ function createSidebar() {
         ],
       },
       {
-        text: '核心组件',
+        text: '基础组件',
         children: [
           {
             text: '前言',
             link: '/components/core/introduction',
           },
-          // {
-          //   text: 'Button 自定义按钮',
-          //   link: '/components/global/button',
-          // },
+          {
+            text: 'ApiSelect 远程下拉框',
+            link: '/components/core/api-select',
+          },
         ],
       },
       {

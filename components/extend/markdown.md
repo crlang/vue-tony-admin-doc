@@ -16,27 +16,27 @@
 </template>
 
 <script lang="ts">
-  import type { MarkDownActionType } from '@/components/Markdown';
+import type { MarkDownActionType } from '@/components/Markdown'
 
-  import { defineComponent, ref } from 'vue';
-  import { MarkDown } from '@/components/Markdown';
+import { defineComponent, ref } from 'vue'
+import { MarkDown } from '@/components/Markdown'
 
-  export default defineComponent({
-    components: { MarkDown },
-    setup() {
-      const markDownRef = ref<Nullable<MarkDownActionType>>(null);
-      const markdownValue = ref(`
+export default defineComponent({
+  components: { MarkDown },
+  setup() {
+    const markDownRef = ref<Nullable<MarkDownActionType>>(null)
+    const markdownValue = ref(`
 # title
 
 # content
-`);
+`)
 
-      return {
-        markdownValue,
-        markDownRef,
-      };
-    },
-  });
+    return {
+      markdownValue,
+      markDownRef
+    }
+  }
+})
 </script>
 ```
 
@@ -76,23 +76,23 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, ref } from 'vue';
-  import { MarkdownViewer } from '@/components/Markdown';
+import { defineComponent, ref } from 'vue'
+import { MarkdownViewer } from '@/components/Markdown'
 
-  export default defineComponent({
-    components: { MarkdownViewer },
-    setup() {
-      const markdownValue = ref(`
+export default defineComponent({
+  components: { MarkdownViewer },
+  setup() {
+    const markdownValue = ref(`
 # title
 
 # content
-`);
+`)
 
-      return {
-        markdownValue,
-      };
-    },
-  });
+    return {
+      markdownValue
+    }
+  }
+})
 </script>
 ```
 

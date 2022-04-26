@@ -8,19 +8,19 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { QrCode } from '@/components/QrCode';
+import { defineComponent } from 'vue'
+import { QrCode } from '@/components/QrCode'
 
-  export default defineComponent({
-    components: { QrCode },
-    setup() {
-      const qrCodeUrl = 'https://www.crlang.com';
+export default defineComponent({
+  components: { QrCode },
+  setup() {
+    const qrCodeUrl = 'https://www.crlang.com'
 
-      return {
-        qrCodeUrl,
-      };
-    },
-  });
+    return {
+      qrCodeUrl
+    }
+  }
+})
 </script>
 ```
 
@@ -32,33 +32,32 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { QrCode } from '@/components/QrCode';
+import { defineComponent } from 'vue'
+import { QrCode } from '@/components/QrCode'
 
-  export default defineComponent({
-    components: { QrCode },
-    setup() {
-      const qrCodeUrl = 'https://www.crlang.com';
+export default defineComponent({
+  components: { QrCode },
+  setup() {
+    const qrCodeUrl = 'https://www.crlang.com'
 
-      function onQrcodeDone({ ctx }) {
-        if (ctx instanceof CanvasRenderingContext2D) {
-          ctx.fillStyle = 'black';
-          ctx.font = '16px "微软雅黑"';
-          ctx.textBaseline = 'bottom';
-          ctx.textAlign = 'center';
-          ctx.fillText('Tony', 100, 195, 200);
-        }
+    function onQrcodeDone({ ctx }) {
+      if (ctx instanceof CanvasRenderingContext2D) {
+        ctx.fillStyle = 'black'
+        ctx.font = '16px "微软雅黑"'
+        ctx.textBaseline = 'bottom'
+        ctx.textAlign = 'center'
+        ctx.fillText('Tony', 100, 195, 200)
       }
+    }
 
-      return {
-        qrCodeUrl,
-        onQrcodeDone,
-      };
-    },
-  });
+    return {
+      qrCodeUrl,
+      onQrcodeDone
+    }
+  }
+})
 </script>
 ```
-
 
 ## Props
 
