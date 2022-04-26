@@ -131,6 +131,10 @@ function createSidebar() {
             text: 'ApiSelect 远程下拉框',
             link: '/components/core/api-select',
           },
+          {
+            text: 'VirtualScroll 虚拟滚动容器',
+            link: '/components/core/virtual-scroll',
+          },
         ],
       },
       {
@@ -256,10 +260,6 @@ function createSidebar() {
           {
             text: 'Transition 页面/组件切换动画',
             link: '/components/transition',
-          },
-          {
-            text: 'VirtualScroll 虚拟滚动容器',
-            link: '/components/virtual-scroll',
           },
         ],
       },
