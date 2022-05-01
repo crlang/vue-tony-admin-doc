@@ -55,6 +55,7 @@ export default defineComponent({
 
 | 属性 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
+| modelValue | `number\|string\|array` | - | 选择器的值 |
 | api | `(arg?: Recordable) => Promise<Recordable[]>` | - | 数据接口，接受一个 Promise 对象 |
 | params | `object` | - | 接口参数。此属性改变时会自动重新加载接口数据 |
 | resultField | `string` | - | 接口返回的字段，如果接口返回数组，可以不填。支持`x.x.x`格式 |

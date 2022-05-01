@@ -135,6 +135,18 @@ function createSidebar() {
             text: 'VirtualScroll 虚拟滚动容器',
             link: '/components/core/virtual-scroll',
           },
+          {
+            text: 'StrengthMeter 校验密码强度',
+            link: '/components/core/strength-meter',
+          },
+          {
+            text: 'IconPicker 图标选择器',
+            link: '/components/core/icon-picker',
+          },
+          {
+            text: 'CountdownInput 验证码输入框',
+            link: '/components/core/countdown-input',
+          },
         ],
       },
       {
@@ -248,10 +260,6 @@ function createSidebar() {
           {
             text: 'Time 相对时间',
             link: '/components/time',
-          },
-          {
-            text: 'StrengthMeter 校验密码强度',
-            link: '/components/strength-meter',
           },
           {
             text: 'Verify 拖动校验',

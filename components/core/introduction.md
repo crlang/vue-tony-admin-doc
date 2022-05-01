@@ -12,3 +12,15 @@
 -
 
 [VirtualScroll 虚拟滚动容器](./virtual-scroll.md)
+
+-
+
+[StrengthMeter 校验密码强度](./strength-meter.md)
+
+-
+
+[IconPicker 图标选择器](./icon-picker.md)
+
+-
+
+[CountdownInput 验证码输入框](./countdown-input.md)
