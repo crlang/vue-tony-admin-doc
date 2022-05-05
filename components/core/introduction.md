@@ -7,6 +7,10 @@
 
 ## 基础组件索引
 
+[Button 按钮示例](./button.md)
+
+-
+
 [ApiSelect 远程下拉框](./api-select.md)
 
 -
