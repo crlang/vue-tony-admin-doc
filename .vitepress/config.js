@@ -128,6 +128,10 @@ function createSidebar() {
             link: '/components/core/introduction',
           },
           {
+            text: 'Button 按钮示例',
+            link: '/components/core/button',
+          },
+          {
             text: 'ApiSelect 远程下拉框',
             link: '/components/core/api-select',
           },
@@ -146,6 +150,10 @@ function createSidebar() {
           {
             text: 'CountdownInput 验证码输入框',
             link: '/components/core/countdown-input',
+          },
+          {
+            text: 'Authority 鉴权',
+            link: '/components/core/authority',
           },
         ],
       },
@@ -196,10 +204,6 @@ function createSidebar() {
           {
             text: 'Icon 图标',
             link: '/components/icon',
-          },
-          {
-            text: 'Authority 鉴权',
-            link: '/components/auth',
           },
           {
             text: 'Form 表单',

@@ -3,27 +3,32 @@
 
 ## Usage
 
+<details>
+<summary>展开查看 Demo 示例</summary>
+
 ```vue
 <template>
-  <Button @click="scrollTo(100)">滚动到100px位置</Button>
-  <Button @click="scrollTo(800)">滚动到800px位置</Button>
-  <Button @click="scrollTo(0)">滚动到顶部</Button>
-  <Button @click="scrollBottom()">滚动到底部</Button>
   <ScrollContainer ref="scrollRef">
-    <div v-for="index in 100" :key="index" style="height: 50px;border-bottom: 1px solid #bbb"></div>
+    <ElButton @click="scrollTo(100)">滚动到100px位置</ElButton>
+    <ElButton @click="scrollTo(800)">滚动到800px位置</ElButton>
+    <ElButton @click="scrollBottom()">滚动到底部</ElButton>
+    <div
+      v-for="index in 100"
+      :key="index"
+      style="height: 50px;border-bottom: 1px solid #bbb"></div>
+    <ElButton @click="scrollTo(0)">滚动到顶部</ElButton>
   </ScrollContainer>
 </template>
 
 <script lang="ts">
-import type { ScrollActionType } from '@/components/Container'
+import type { ScrollActionType } from '@/components/ScrollContainer'
 
 import { defineComponent, ref, unref } from 'vue'
 import { ElButton } from 'element-plus'
-import { ScrollContainer } from '@/components/Container'
-import { PageWrapper } from '@/components/Page'
+import { ScrollContainer } from '@/components/ScrollContainer'
 
 export default defineComponent({
-  components: { ElButton, ScrollContainer, PageWrapper },
+  components: { ElButton, ScrollContainer },
   setup() {
     const scrollRef = ref<Nullable<ScrollActionType>>(null)
     const getScroll = () => {
@@ -50,6 +55,7 @@ export default defineComponent({
 </script>
 ```
 
+</details>
 
 ## Methods
 
