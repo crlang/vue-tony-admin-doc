@@ -28,7 +28,7 @@
 import { defineComponent } from 'vue'
 import { ElButton } from 'element-plus'
 
-import { BasicDrawer, useDrawer } from '@/components/Drawer'
+import { BasicDrawer, useDrawer } from '@/components/BasicDrawer'
 
 export default defineComponent({
   components: { ElButton, BasicDrawer },
@@ -74,7 +74,7 @@ export default defineComponent({
 import { defineComponent } from 'vue'
 import { ElButton } from 'element-plus'
 
-import { useDrawer } from '@/components/Drawer'
+import { useDrawer } from '@/components/BasicDrawer'
 
 import Drawer from './Drawer.vue'
 
@@ -126,7 +126,7 @@ export default defineComponent({
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { ElButton } from 'element-plus'
-import { BasicDrawer, useDrawerInner } from '@/components/Drawer'
+import { BasicDrawer, useDrawerInner } from '@/components/BasicDrawer'
 import { useMessage } from '@/hooks/web/useMessage'
 
 export default defineComponent({

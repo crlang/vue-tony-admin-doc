@@ -1,16 +1,10 @@
-# Description 详情描述
+# BasicDescription 详情描述
 
 对 `Element Plus` 的 Descriptions 组件进行二次封装，**用法更简洁**。
 
 ::: tip 前言
 
 由于在中后台开发的时候，数据详情是出现最多的页面，因此，为了能有效减少详情页面的重复开发工作，这个组件能有效减少重复的代码量，仅需要配置几个字段，就能达到效果。
-
-:::
-
-::: warning
-
-- 注意 Description 大小写
 
 :::
 
@@ -24,7 +18,7 @@
 ```vue
 <template>
   <div class="p-4">
-    <Description
+    <BasicDescription
       title="基础示例"
       :collapseOptions="{ canExpand: true, helpMessage: 'help me' }"
       :column="3"
@@ -32,19 +26,19 @@
       :schema="schema"
     >
       <template #age="val">{{ val }} 岁</template>
-    </Description>
+    </BasicDescription>
   </div>
 </template>
 
 <script lang="ts">
-import type { DescItem } from '@/components/Description'
+import type { DescItem } from '@/components/BasicDescription'
 
 import { defineComponent } from 'vue'
 
-import { Description } from '@/components/Description'
+import { BasicDescription } from '@/components/BasicDescription'
 
 export default defineComponent({
-  components: { Description },
+  components: { BasicDescription },
   setup() {
     const demoData: Recordable = {
       username: 'tony',
@@ -93,19 +87,19 @@ export default defineComponent({
 ```vue
 <template>
   <div class="p-4">
-    <Description @register="register">
+    <BasicDescription @register="register">
       <template #age="val">{{ val }} 岁</template>
-    </Description>
+    </BasicDescription>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import { Description, DescItem, useDescription } from '@/components/Description'
+import { BasicDescription, DescItem, useDescription } from '@/components/BasicDescription'
 
 export default defineComponent({
-  components: { Description },
+  components: { BasicDescription },
   setup() {
     const demoData: Recordable = {
       username: 'tony',
