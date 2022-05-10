@@ -350,7 +350,7 @@ export default defineComponent({
 
 ::: tip 温馨提示
 
-- **保持** [Element Plus Table 组件](https://element-plus.gitee.io/zh-CN/component/table.html) **原有功能**的情况下扩展以下属性
+- **保持** [Element Plus Table 组件](https://element-plus.org/zh-CN/component/table.html) **原有功能**的情况下扩展以下属性
 
 :::
 
@@ -488,7 +488,7 @@ export default defineComponent({
 
 ::: tip 温馨提示
 
-- **继承** [Element Plus Table 组件的 Table-column](https://element-plus.gitee.io/zh-CN/component/table.html) **原有功能**的情况下扩展以下属性
+- **继承** [Element Plus Table 组件的 Table-column](https://element-plus.org/zh-CN/component/table.html) **原有功能**的情况下扩展以下属性
 
 :::
 

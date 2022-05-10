@@ -22,7 +22,7 @@
 
 ::: tip 温馨提示
 
-- **保持** [Element Plus button 组件](https://element-plus.gitee.io/zh-CN/component/button.html) **原有功能**的情况下扩展以下属性
+- **💡💡💡保持💡💡💡** [Element Plus button 组件](https://element-plus.org/zh-CN/component/button.html) **原有功能**的情况下扩展以下属性
 
 :::
 

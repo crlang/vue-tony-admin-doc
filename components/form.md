@@ -187,7 +187,7 @@ updateSchema([
 
 > clearValidate 清空表单校验信息
 
-详细信息请参考 [💡💡💡官网文档](https://element-plus.gitee.io/zh-CN/component/form.html#form-%E6%96%B9%E6%B3%95)
+详细信息请参考 [💡💡💡官网文档](https://element-plus.org/zh-CN/component/form.html#form-%E6%96%B9%E6%B3%95)
 
 :::
 
@@ -196,7 +196,7 @@ updateSchema([
 
 :::tip 温馨提示
 
-- **保持** [Element Plus Form 组件](https://element-plus.gitee.io/zh-CN/component/form.html) **原有功能**的情况下扩展以下属性
+- **保持** [Element Plus Form 组件](https://element-plus.org/zh-CN/component/form.html) **原有功能**的情况下扩展以下属性
 
 :::
 

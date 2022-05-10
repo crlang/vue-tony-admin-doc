@@ -155,6 +155,30 @@ function createSidebar() {
             text: 'Authority 鉴权',
             link: '/components/core/authority',
           },
+          {
+            text: 'ClickOutside 监听点击区域',
+            link: '/components/core/click-outside',
+          },
+          {
+            text: 'CardGrid 栅格卡片',
+            link: '/components/core/card-grid',
+          },
+          {
+            text: 'CollapseContainer 区域折叠容器',
+            link: '/components/core/collapse-container',
+          },
+          {
+            text: 'ScrollContainer 区域滚动容器',
+            link: '/components/core/scroll-container',
+          },
+          {
+            text: 'LazyContainer 区域延时加载容器',
+            link: '/components/core/lazy-container',
+          },
+          {
+            text: 'CountTo 数字动画',
+            link: '/components/core/count-to',
+          },
         ],
       },
       {

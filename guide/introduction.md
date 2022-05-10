@@ -36,7 +36,7 @@ yarn dev
 建议在开发前先学一下以下内容，提前了解和学习这些知识，会对项目理解非常有帮助:
 
 - [Vue3 文档](https://v3.vuejs.org/)
-- [Element Plus 文档](https://element-plus.gitee.io/)
+- [Element Plus 文档](https://element-plus.org/)
 - [Vue-RFCS](https://github.com/vuejs/rfcs)
 - [Vue2 迁移到 3 说明](https://v3.vuejs.org/guide/migration/introduction.html)
 - [TypeScript 文档](https://www.typescriptlang.org/)
