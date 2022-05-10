@@ -1,4 +1,4 @@
-# BasicDragVerify 拖动校验
+# DragVerify 拖动校验
 
 
 ## BasicDragVerify 拖动校验
