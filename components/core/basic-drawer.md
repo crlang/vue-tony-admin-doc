@@ -55,7 +55,7 @@ export default defineComponent({
 
 </details>
 
-**拆分单文件组件示例**
+**拆分单文件组件示例(建议)**
 
 <details>
 <summary>展开查看 Demo 示例</summary>
