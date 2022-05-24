@@ -266,10 +266,6 @@ function createSidebar() {
             link: '/components/count-to',
           },
           {
-            text: 'Cropper 图片/头像裁剪',
-            link: '/components/cropper',
-          },
-          {
             text: 'Description 详情',
             link: '/components/desc',
           },
