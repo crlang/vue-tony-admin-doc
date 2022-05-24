@@ -96,3 +96,7 @@
 -
 
 [BasicModal 弹窗](./basic-modal)
+
+-
+
+[BasicUpload 文件上传](./basic-upload)
