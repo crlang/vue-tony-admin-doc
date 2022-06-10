@@ -1,7 +1,9 @@
-# Form 表单
+# BasicForm 表单
 
 :::tip 温馨提示
+
 对 `Element Plus` 的 `Form` 组件进行二次封装，**用法简洁，功能丰富**。
+
 :::
 
 ## Usage
