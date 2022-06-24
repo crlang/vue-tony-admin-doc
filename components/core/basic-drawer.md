@@ -55,7 +55,7 @@ export default defineComponent({
 
 </details>
 
-**拆分单文件组件示例(建议)**
+**拆分文件示例(建议)**
 
 <details>
 <summary>展开查看 Demo 示例</summary>
@@ -168,7 +168,7 @@ export default defineComponent({
 | isDetail       | `boolean`                | `false` | 是否为详情模式(带返回按钮) |
 | loading        | `boolean`                | `false` | loading 状态               |
 | loadingText    | `string`                 | -       | loading 文本               |
-| closeFunc      | `() => Promise<boolean>` | -       | 自定义关闭函数，关闭前执行 |
+| closeFn      | `() => Promise<boolean>` | -       | 自定义关闭函数，关闭前执行 |
 | showFooter     | `boolean`                | `false`       | 是否显示底部区域           |
 | showConfirmBtn | `boolean`                | `true`  | 是否显示确定按钮           |
 | confirmOptions | `object`                 | `{text: '确定',type:'primary'}`       | 确定按钮(配置同 ElButton)  |

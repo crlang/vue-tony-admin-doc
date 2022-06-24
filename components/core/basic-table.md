@@ -8,7 +8,7 @@
 
 ## Usage
 
-### 基础示例
+**常规示例**
 
 <details>
 <summary>展开查看 Demo 示例</summary>
@@ -82,7 +82,7 @@ export default defineComponent({
 
 </details>
 
-### useTable 方式(推荐)
+**useTable 示例(推荐)**
 
 <details>
 <summary>展开查看 Demo 示例</summary>
@@ -168,7 +168,7 @@ export default defineComponent({
 
 </details>
 
-### template 方式(基础拓展)
+**常规示例(拓展)**
 
 <details>
 <summary>展开查看 Demo 示例</summary>
@@ -250,7 +250,7 @@ export default defineComponent({
 
 </details>
 
-### 权限或业务控制
+**权限或业务控制**
 
 <details>
 <summary>展开查看 Demo 示例</summary>

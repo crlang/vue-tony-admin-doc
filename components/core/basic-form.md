@@ -8,9 +8,7 @@
 
 ## Usage
 
-
-### useForm 方式
-
+**常规示例**
 
 <details>
 <summary>展开查看 Demo 示例</summary>
@@ -18,8 +16,72 @@
 ```vue
 <template>
   <div class="m-4">
-    <Button @click="setProps({ showSubmitButton: false })">隐藏查询按钮</Button>
-    <Button @click="setProps({ showSubmitButton: true })">显示查询按钮</Button>
+    <ElButton @click="setProps({ showSubmitButton: false })">隐藏查询按钮</ElButton>
+    <ElButton @click="setProps({ showSubmitButton: true })">显示查询按钮</ElButton>
+    <BasicForm
+      :schemas="schemas"
+      ref="formElRef"
+      class="mt-4"
+      :labelWidth="100"
+      @submit="handleSubmit"
+      :actionColProps="{ span: 24 }" />
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+import { ElButton } from 'element-plus'
+import { BasicForm, BasicFormSchema, FormActionMethods, BasicProps } from '@/components/BasicForm'
+
+export default defineComponent({
+  components: { ElButton, BasicForm },
+  setup() {
+    const formElRef = ref<Nullable<FormActionMethods>>(null)
+    const schemas: BasicFormSchema[] = [
+      {
+        field: 'field',
+        component: 'ElInput',
+        label: '字段1',
+        componentProps: {
+          clearable: true,
+        },
+      },
+    ]
+
+    function setProps(props: Partial<BasicProps>) {
+      const formEl = formElRef.value
+      if (!formEl) return
+
+      formEl.setFormProps(props)
+    }
+
+    function handleSubmit(values: any) {
+      console.info('submit values', values)
+    }
+
+    return {
+      formElRef,
+      schemas,
+      handleSubmit,
+      setProps,
+    }
+  },
+})
+</script>
+```
+
+</details>
+
+**useForm 方式(推荐)**
+
+<details>
+<summary>展开查看 Demo 示例</summary>
+
+```vue
+<template>
+  <div class="m-4">
+    <ElButton @click="setFormProps({ showSubmitButton: false })">隐藏查询按钮</ElButton>
+    <ElButton @click="setFormProps({ showSubmitButton: true })">显示查询按钮</ElButton>
     <BasicForm
       class="mt-4"
       @register="register"
@@ -29,55 +91,49 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { BasicForm, FormSchema, useForm } from '@/components/Form'
+import { ElButton } from 'element-plus'
+
+import { BasicForm, BasicFormSchema, useForm } from '@/components/BasicForm'
 
 export default defineComponent({
-  components: { BasicForm },
+  components: { ElButton, BasicForm },
   setup() {
-    const schemas: FormSchema[] = [
+    const schemas: BasicFormSchema[] = [
       {
         field: 'field',
         component: 'ElInput',
         label: '字段1',
+        componentProps: {
+          clearable: true,
+        },
       },
-      componentProps: {
-        clearable: true
-      }
     ]
 
-    const [register, { setProps }] = useForm({
+    const [register, { setFormProps }] = useForm({
       labelWidth: 100,
       schemas,
-      actionColOptions: {
+      actionColProps: {
         span: 24,
       },
     })
 
-    function handleSubmit(values: any) {
-      console.table('submit values', values)
+    function handleSubmit(values) {
+      console.info('submit values', values)
     }
     return {
       register,
       handleSubmit,
-      setProps,
+      setFormProps,
     }
   },
 })
 </script>
 ```
 
-:::warning 特别说明
-所有可调用函数见下方 [Methods](#Methods)
-
-参数 props 内的值可以是 computed 或者 ref 类型
-
-register 用于注册 `useForm`，如果需要使用 `useForm` 提供的 api，必须将 register 传入组件的 `onRegister`
-:::
-
 </details>
 
 
-### template 方式
+### render 方式渲染表单子项
 
 <details>
 <summary>展开查看 Demo 示例</summary>
@@ -85,48 +141,69 @@ register 用于注册 `useForm`，如果需要使用 `useForm` 提供的 api，�
 ```vue
 <template>
   <div class="m-4">
-    <Button @click="setProps({ showSubmitButton: false })">隐藏查询按钮</Button>
-    <Button @click="setProps({ showSubmitButton: true })">显示查询按钮</Button>
     <BasicForm
-      :schemas="schemas"
-      ref="formElRef"
-      class="mt-4"
-      :labelWidth="100"
-      @submit="handleSubmit"
-      :actionColOptions="{ span: 24 }" />
+      @register="register"
+      @submit="handleSubmit" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { BasicForm, FormSchema, FormActionType, FormProps } from '@/components/Form'
+import { defineComponent, h } from 'vue'
+import { BasicForm, BasicFormSchema, useForm } from '@/components/Form'
+import { useMessage } from '@/hooks/web/useMessage'
+import { ElInput } from 'element-plus'
 
 export default defineComponent({
   components: { BasicForm },
   setup() {
-    const formElRef = ref<Nullable<FormActionType>>(null)
-    const schemas: FormSchema[] = [
+    const { createMessage } = useMessage()
+    const schemas: BasicFormSchema[] = [
       {
-        field: 'field',
+        field: 'field1',
         component: 'ElInput',
         label: '字段1',
-        componentProps: {
-          clearable: true
-        }
+        colProps: {
+          span: 8,
+        },
+        rules: [{ required: true }],
+        render: ({ model, field }) => {
+          return h(ElInput, {
+            placeholder: '请输入',
+            modelValue: model[field],
+            onInput: (v: any) => {
+              model[field] = v
+            },
+          })
+        },
+      },
+      {
+        field: 'field2',
+        component: 'ElInput',
+        label: '字段2',
+        colProps: {
+          span: 8,
+        },
+        required: true,
+        renderComponentContent: () => {
+          return {
+            suffix: () => 'suffix',
+          }
+        },
       },
     ]
 
-    function handleSubmit(values: any) {
-      console.table('submit values', values)
-    }
-    return {
-      formElRef,
+    const [register] = useForm({
+      labelWidth: 120,
       schemas,
-      handleSubmit,
-      setProps(props: Partial<FormProps>) {
-        const formEl = formElRef.value
-        if (!formEl) return
-        formEl.setProps(props)
+      actionColOptions: {
+        span: 24,
+      },
+    })
+    return {
+      register,
+      handleSubmit: (values: any) => {
+        console.table('submit values', values)
+        createMessage.success('submit success')
       },
     }
   },
@@ -136,6 +213,196 @@ export default defineComponent({
 
 </details>
 
+### slot 方式渲染表单子项
+
+<details>
+<summary>展开查看 Demo 示例</summary>
+
+```vue
+<template>
+  <div class="m-4">
+    <BasicForm
+      @register="register"
+      @submit="handleSubmit">
+      <template #customSlot="{ model, field }">
+        <el-input v-model:modelValue="model[field]" />
+      </template>
+    </BasicForm>
+    <Button @click="handleSubmit2">自定义提交</Button>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { ElInput } from 'element-plus'
+import { BasicForm, useForm } from '@/components/Form'
+import { useMessage } from '@/hooks/web/useMessage'
+
+export default defineComponent({
+  name: 'FormDemo',
+  components: { ElInput, BasicForm },
+  setup() {
+    const { createMessage } = useMessage()
+
+    const [register, { submit, validate, getFieldsValue }] = useForm({
+      labelWidth: 100,
+      actionColOptions: {
+        span: 24,
+      },
+      schemas: [
+        {
+          field: 'field1',
+          label: '字段1',
+          required: true,
+          component: 'ElInput', // 随便填写一项
+          slot: 'customSlot',
+        },
+      ],
+    })
+
+    function handleSubmit(values: any) {
+      console.table('submit values', values)
+      createMessage.success('submit success')
+    }
+
+    async function handleSubmit2() {
+      await validate()
+
+      const values = getFieldsValue()
+      console.table('submit values', values)
+
+      submit()
+    }
+
+    return {
+      register,
+      handleSubmit,
+      handleSubmit2,
+    }
+  },
+})
+</script>
+```
+
+</details>
+
+### ifShow/show/dynamicDisabled 趣味联合
+
+<details>
+<summary>展开查看 Demo 示例</summary>
+
+```vue
+<template>
+  <div class="m-4">
+    <BasicForm @register="register" />
+    <el-alert title="测试提示：当字段1输入内容为 show 时， 字段2将会动态显示" />
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { ElAlert } from 'element-plus'
+import { BasicForm, BasicFormSchema, useForm } from '@/components/Form'
+
+export default defineComponent({
+  components: { ElAlert, BasicForm },
+  setup() {
+    const schemas: BasicFormSchema[] = [
+      {
+        field: 'field1',
+        component: 'ElInput',
+        label: '字段1',
+        colProps: {
+          span: 8,
+        },
+      },
+      {
+        field: 'field2',
+        component: 'ElInput',
+        label: '字段2',
+        colProps: {
+          span: 8,
+        },
+        ifShow: ({ values }) => {
+          return values.field1 === 'show'
+        },
+      },
+      {
+        field: 'field3',
+        component: 'ElSwitch',
+        label: '字段3',
+        colProps: {
+          span: 8,
+        },
+        show: ({ values }) => {
+          console.log('444aaaa', values)
+          return !!values.field2
+        },
+      },
+      {
+        field: 'field4',
+        component: 'ElDatePicker',
+        label: '字段4',
+        colProps: {
+          span: 8,
+        },
+        dynamicDisabled: ({ values }) => {
+          return !values.field3
+        },
+      },
+    ]
+    const [register] = useForm({
+      labelWidth: 120,
+      schemas,
+      actionColOptions: {
+        span: 24,
+      },
+    })
+
+    return {
+      register,
+    }
+  },
+})
+</script>
+```
+
+</details>
+
+## Props
+
+:::tip 温馨提示
+
+- **保持** [Element Plus Form 组件](https://element-plus.org/zh-CN/component/form.html) **原有功能**的情况下扩展以下属性
+
+:::
+
+| 属性 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| schemas | `BasicFormSchema[]` | - | 表单配置，见下方 `BasicFormSchema` 配置 |
+| rowProps | `object` | - | 配置全局的`row`，配置参考`ElRow` |
+| rowStyle | `object` | - | 配置全局的`row`样式 |
+| colProps | `object` | - |  配置全局的`col`,子项也可单独配置并优先于全局，配置参考`ElCol` |
+| mergeDynamicData | `object` | - | 额外传递到子组件的参数 values |
+| autoSetPlaceHolder | `boolean` | `true` | 自动设置表单内组件的 placeholder |
+| autoSubmitOnEnter | `boolean` | `false` | 是否在input中输入时按回车提交 |
+| submitOnReset | `boolean` | `true` | 重置时是否提交表单 |
+| emptySpan | `object` | `0` | 配置空白`col`，配置参考`ElCol` |
+| rulesMessageJoinLabel | `boolean` | `false` | 如果表单项有校验时，是否将字段中文名字拼接到自动生成的校验信息后方 |
+| showAdvancedButton | `boolean` | `false` | 是否显示展开收起按钮 |
+| autoAdvancedLine | `number` | `3` | 如果 `showAdvancedButton` 为 `true`，超过指定行数行默认折叠 |
+| alwaysShowLines  | `number` | `1` | 折叠时始终保持显示的行数  |
+| autoFocusFirstItem | `boolean` | `false` | 是否聚焦第一个输入框，只在第一个表单项为 input 的时候起作用 |
+| actionColOptions | `object` | - | 操作按钮外层 ElCol 组件配置，如果开启 `showAdvancedButton`，则不用设置 |
+| showActionButtonGroup | `boolean` | `true` | 是否显示操作按钮(重置/提交) |
+| showSubmitButton | `boolean` | `true` | 是否显示提交按钮 |
+| submitButtonOptions | `object`| - | 配置确认按钮，配置参考`ElButton` |
+| showResetButton | `boolean` | `true` | 是否显示重置按钮 |
+| resetButtonOptions | `object` | - | 配置重置按钮，配置参考`ElButton` |
+| resetFunc | `() => Promise<void>` | - | 自定义重置按钮方法 |
+| submitFunc | `() => Promise<void>` | - | 自定义提交按钮方法 |
+
+<!-- | transformDateFunc | `(date:any)=>string` | - | 存在 moment.js 对象，则返回`YYYY-MM-DD HH:mm:ss`格式 | -->
 
 ### Methods
 
@@ -144,9 +411,9 @@ export default defineComponent({
 | setProps | - | 设置表单的 props |
 | getFieldsValue | - | 获取表单值 |
 | setFieldsValue | - | 设置表单字段值 |
-| updateSchema | `(data: Partial<FormSchema> \| Partial<FormSchema>[])` | 更新表单的 schema, 只更新函数所传的参数 |
+| updateSchema | `(data: Partial<BasicFormSchema> \| Partial<BasicFormSchema>[])` | 更新表单的 schema, 只更新函数所传的参数 |
 | resetSchema | - | 重置表单的 schema |
-| appendSchemaByField | `(schema: FormSchema, prefixField: string \| undefined, first?: boolean \| undefined)` | 插入到指定 filed 后面，如果没传指定 field，则插入到最后,当 first = true 时插入到第一个位置 |
+| appendSchemaByField | `(schema: BasicFormSchema, prefixField: string \| undefined, first?: boolean \| undefined)` | 插入到指定 filed 后面，如果没传指定 field，则插入到最后,当 first = true 时插入到第一个位置 |
 | removeSchemaByField | `(field: string \| string[])` | 根据 field 删除 Schema |
 
 :::warning 设置表单的 props 有三个方式
@@ -193,44 +460,7 @@ updateSchema([
 
 :::
 
-
-## Props
-
-:::tip 温馨提示
-
-- **保持** [Element Plus Form 组件](https://element-plus.org/zh-CN/component/form.html) **原有功能**的情况下扩展以下属性
-
-:::
-
-| 属性 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| schemas | `FormSchema[]` | - | 表单配置，见下方 `FormSchema` 配置 |
-| rowProps | `object` | - | 配置全局的`row`，配置参考`ElRow` |
-| rowStyle | `object` | - | 配置全局的`row`样式 |
-| colProps | `object` | - |  配置全局的`col`,子项也可单独配置并优先于全局，配置参考`ElCol` |
-| mergeDynamicData | `object` | - | 额外传递到子组件的参数 values |
-| autoSetPlaceHolder | `boolean` | `true` | 自动设置表单内组件的 placeholder |
-| autoSubmitOnEnter | `boolean` | `false` | 是否在input中输入时按回车提交 |
-| submitOnReset | `boolean` | `true` | 重置时是否提交表单 |
-| emptySpan | `object` | `0` | 配置空白`col`，配置参考`ElCol` |
-| rulesMessageJoinLabel | `boolean` | `false` | 如果表单项有校验时，是否将字段中文名字拼接到自动生成的校验信息后方 |
-| showAdvancedButton | `boolean` | `false` | 是否显示展开收起按钮 |
-| autoAdvancedLine | `number` | `3` | 如果 `showAdvancedButton` 为 `true`，超过指定行数行默认折叠 |
-| alwaysShowLines  | `number` | `1` | 折叠时始终保持显示的行数  |
-| autoFocusFirstItem | `boolean` | `false` | 是否聚焦第一个输入框，只在第一个表单项为 input 的时候起作用 |
-| actionColOptions | `object` | - | 操作按钮外层 ElCol 组件配置，如果开启 `showAdvancedButton`，则不用设置 |
-| showActionButtonGroup | `boolean` | `true` | 是否显示操作按钮(重置/提交) |
-| showSubmitButton | `boolean` | `true` | 是否显示提交按钮 |
-| submitButtonOptions | `object`| - | 配置确认按钮，配置参考`ElButton` |
-| showResetButton | `boolean` | `true` | 是否显示重置按钮 |
-| resetButtonOptions | `object` | - | 配置重置按钮，配置参考`ElButton` |
-| resetFunc | `() => Promise<void>` | - | 自定义重置按钮方法 |
-| submitFunc | `() => Promise<void>` | - | 自定义提交按钮方法 |
-
-<!-- | transformDateFunc | `(date:any)=>string` | - | 存在 moment.js 对象，则返回`YYYY-MM-DD HH:mm:ss`格式 | -->
-
-
-### FormSchema
+### BasicFormSchema
 
 | 属性 | 类型 | 默认值 |  说明 |
 | --- | --- | --- | --- |
@@ -266,7 +496,7 @@ updateSchema([
 
 ```ts
 interface RenderCallbackParams {
-  schema: FormSchema
+  schema: BasicFormSchema
   values: Recordable
   model: Recordable
   field: string
@@ -371,230 +601,6 @@ useComponentRegister('ApiSelect', ApiSelect);
 - `ElDivider` 可以使用`componentProps`来设置除`type`之外的 props
 - `ElDivider` 不会渲染`FormItem`，因此`schema`中除`label`、`componentProps`、`helpMessage`、`helpComponentProps`以外的属性不会被用到
 
-
-### render 方式渲染表单子项
-
-```vue
-<template>
-  <div class="m-4">
-    <BasicForm
-      @register="register"
-      @submit="handleSubmit" />
-  </div>
-</template>
-
-<script lang="ts">
-import { defineComponent, h } from 'vue'
-import { BasicForm, FormSchema, useForm } from '@/components/Form'
-import { useMessage } from '@/hooks/web/useMessage'
-import { ElInput } from 'element-plus'
-
-export default defineComponent({
-  components: { BasicForm },
-  setup() {
-    const { createMessage } = useMessage()
-    const schemas: FormSchema[] = [
-      {
-        field: 'field1',
-        component: 'ElInput',
-        label: '字段1',
-        colProps: {
-          span: 8,
-        },
-        rules: [{ required: true }],
-        render: ({ model, field }) => {
-          return h(ElInput, {
-            placeholder: '请输入',
-            modelValue: model[field],
-            onInput: (v: any) => {
-              model[field] = v
-            },
-          })
-        },
-      },
-      {
-        field: 'field2',
-        component: 'ElInput',
-        label: '字段2',
-        colProps: {
-          span: 8,
-        },
-        required: true,
-        renderComponentContent: () => {
-          return {
-            suffix: () => 'suffix',
-          }
-        },
-      },
-    ]
-
-    const [register] = useForm({
-      labelWidth: 120,
-      schemas,
-      actionColOptions: {
-        span: 24,
-      },
-    })
-    return {
-      register,
-      handleSubmit: (values: any) => {
-        console.table('submit values', values)
-        createMessage.success('submit success')
-      },
-    }
-  },
-})
-</script>
-```
-
-### slot 方式渲染表单子项
-
-```vue
-<template>
-  <div class="m-4">
-    <BasicForm
-      @register="register"
-      @submit="handleSubmit">
-      <template #customSlot="{ model, field }">
-        <el-input v-model:modelValue="model[field]" />
-      </template>
-    </BasicForm>
-    <Button @click="handleSubmit2">自定义提交</Button>
-  </div>
-</template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { ElInput } from 'element-plus'
-import { BasicForm, useForm } from '@/components/Form'
-import { useMessage } from '@/hooks/web/useMessage'
-
-export default defineComponent({
-  name: 'FormDemo',
-  components: { ElInput, BasicForm },
-  setup() {
-    const { createMessage } = useMessage()
-
-    const [register, { submit, validate, getFieldsValue }] = useForm({
-      labelWidth: 100,
-      actionColOptions: {
-        span: 24,
-      },
-      schemas: [
-        {
-          field: 'field1',
-          label: '字段1',
-          required: true,
-          component: 'ElInput', // 随便填写一项
-          slot: 'customSlot',
-        },
-      ],
-    })
-
-    function handleSubmit(values: any) {
-      console.table('submit values', values)
-      createMessage.success('submit success')
-    }
-
-    async function handleSubmit2() {
-      await validate()
-
-      const values = getFieldsValue()
-      console.table('submit values', values)
-
-      submit()
-    }
-
-    return {
-      register,
-      handleSubmit,
-      handleSubmit2,
-    }
-  },
-})
-</script>
-```
-
-
-### ifShow/show/dynamicDisabled 趣味联合
-
-```vue
-<template>
-  <div class="m-4">
-    <BasicForm @register="register" />
-    <el-alert title="测试提示：当字段1输入内容为 show 时， 字段2将会动态显示" />
-  </div>
-</template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { ElAlert } from 'element-plus'
-import { BasicForm, FormSchema, useForm } from '@/components/Form'
-
-export default defineComponent({
-  components: { ElAlert, BasicForm },
-  setup() {
-    const schemas: FormSchema[] = [
-      {
-        field: 'field1',
-        component: 'ElInput',
-        label: '字段1',
-        colProps: {
-          span: 8,
-        },
-      },
-      {
-        field: 'field2',
-        component: 'ElInput',
-        label: '字段2',
-        colProps: {
-          span: 8,
-        },
-        ifShow: ({ values }) => {
-          return values.field1 === 'show'
-        },
-      },
-      {
-        field: 'field3',
-        component: 'ElSwitch',
-        label: '字段3',
-        colProps: {
-          span: 8,
-        },
-        show: ({ values }) => {
-          console.log('444aaaa', values)
-          return !!values.field2
-        },
-      },
-      {
-        field: 'field4',
-        component: 'ElDatePicker',
-        label: '字段4',
-        colProps: {
-          span: 8,
-        },
-        dynamicDisabled: ({ values }) => {
-          return !values.field3
-        },
-      },
-    ]
-    const [register] = useForm({
-      labelWidth: 120,
-      schemas,
-      actionColOptions: {
-        span: 24,
-      },
-    })
-
-    return {
-      register,
-    }
-  },
-})
-</script>
-```
-
-
 ## Slots
 
 | 名称          | 说明         |
@@ -615,7 +621,7 @@ export default defineComponent({
 ### Usage
 
 ```ts
-const schemas: FormSchema[] = [
+const schemas: BasicFormSchema[] = [
   {
     field: 'field',
     component: 'ApiSelect',
@@ -646,3 +652,12 @@ const schemas: FormSchema[] = [
   disabled?: boolean
 }
 ```
+
+
+:::warning 特别说明
+所有可调用函数见下方 [Methods](#Methods)
+
+参数 props 内的值可以是 computed 或者 ref 类型
+
+register 用于注册 `useForm`，如果需要使用 `useForm` 提供的 api，必须将 register 传入组件的 `onRegister`
+:::

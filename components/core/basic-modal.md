@@ -54,7 +54,7 @@ export default defineComponent({
 
 </details>
 
-**拆分单文件组件示例(建议)**
+**拆分文件示例(建议)**
 
 <details>
 <summary>展开查看 Demo 示例</summary>
@@ -140,7 +140,7 @@ export default defineComponent({
 | confirmOptions | `object`                 | `{type:'primary',text:'确定'}` | 确认按钮属性，参考 ElButton |
 | showCancelBtn  | `boolean`                | `true`                         | 显示关闭按钮                |
 | cancelOptions  | `object`                 | `{type:'default',text:'取消'}` | 关闭按钮属性，参考 ElButton |
-| closeFunc      | `() => Promise<boolean>` |                                | 关闭前执行的函数            |
+| closeFn      | `() => Promise<boolean>` |                                | 关闭前执行的函数            |
 
 ## Events
 

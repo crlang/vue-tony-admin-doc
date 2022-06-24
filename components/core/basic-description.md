@@ -10,7 +10,7 @@
 
 ## Usage
 
-**Template 方式**
+**常规示例**
 
 <details>
 <summary>展开查看 Demo 示例</summary>
@@ -79,7 +79,7 @@ export default defineComponent({
 
 </details>
 
-**useDescription 方式**
+**useDescription 示例(推荐)**
 
 <details>
 <summary>展开查看 Demo 示例</summary>
