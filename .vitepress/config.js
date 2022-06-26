@@ -306,10 +306,6 @@ function createSidebar() {
             text: 'ContextMenu',
             link: '/components/functional/context-menu',
           },
-          {
-            text: 'Preview',
-            link: '/components/functional/preview',
-          },
         ],
       },
     ],
