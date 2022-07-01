@@ -342,6 +342,10 @@ function createSidebar() {
             link: '/other/faq',
           },
           {
+            text: '赞助',
+            link: '/other/donate',
+          },
+          {
             text: '常见疑点',
             link: '/other/doubt',
           },
