@@ -71,16 +71,12 @@ function createNav() {
           link: '/components/core/introduction',
         },
         {
-          text: '拓展组件',
-          link: '/components/extend/introduction',
-        },
-        {
           text: '函数式组件',
           link: '/components/functional/introduction',
         },
         {
-          text: '常用组件(旧)',
-          link: '/components/basic',
+          text: '拓展组件',
+          link: '/components/extend/introduction',
         },
       ],
     },
@@ -99,15 +95,6 @@ function createSidebar() {
   return {
     '/components/': [
       {
-        text: '组件',
-        children: [
-          {
-            text: '前言',
-            link: '/components/introduction',
-          },
-        ],
-      },
-      {
         text: '全局组件',
         children: [
           {
@@ -115,8 +102,8 @@ function createSidebar() {
             link: '/components/global/introduction',
           },
           {
-            text: 'Button 自定义按钮',
-            link: '/components/global/button',
+            text: 'PageWrapper 页面外层容器',
+            link: '/components/global/page-wrapper',
           },
         ],
       },
@@ -132,12 +119,60 @@ function createSidebar() {
             link: '/components/core/button',
           },
           {
+            text: 'BasicTable 表格',
+            link: '/components/core/basic-table',
+          },
+          {
+            text: 'BasicForm 表单',
+            link: '/components/core/basic-form',
+          },
+          {
+            text: 'BasicDescription 详情描述',
+            link: '/components/core/basic-description',
+          },
+          {
+            text: 'BasicModal 弹窗',
+            link: '/components/core/basic-modal',
+          },
+          {
+            text: 'BasicDrawer 抽屉',
+            link: '/components/core/basic-drawer',
+          },
+          {
+            text: 'Authority 鉴权容器',
+            link: '/components/core/authority',
+          },
+          {
+            text: 'SvgIcon SVG图标',
+            link: '/components/core/svg-icon',
+          },
+          {
             text: 'ApiSelect 远程下拉框',
             link: '/components/core/api-select',
           },
           {
+            text: 'CollapseContainer 区域折叠容器',
+            link: '/components/core/collapse-container',
+          },
+          {
+            text: 'Basic 标题及帮助',
+            link: '/components/core/basic',
+          },
+          {
+            text: 'BasicUpload 文件上传',
+            link: '/components/core/basic-upload',
+          },
+          {
+            text: 'Icon 图标',
+            link: '/components/core/icon',
+          },
+          {
             text: 'VirtualScroll 虚拟滚动容器',
             link: '/components/core/virtual-scroll',
+          },
+          {
+            text: 'List 数据列表',
+            link: '/components/core/list',
           },
           {
             text: 'StrengthMeter 校验密码强度',
@@ -152,20 +187,12 @@ function createSidebar() {
             link: '/components/core/countdown-input',
           },
           {
-            text: 'Authority 鉴权',
-            link: '/components/core/authority',
-          },
-          {
             text: 'ClickOutside 监听点击区域',
             link: '/components/core/click-outside',
           },
           {
             text: 'CardGrid 栅格卡片',
             link: '/components/core/card-grid',
-          },
-          {
-            text: 'CollapseContainer 区域折叠容器',
-            link: '/components/core/collapse-container',
           },
           {
             text: 'ScrollContainer 区域滚动容器',
@@ -178,6 +205,31 @@ function createSidebar() {
           {
             text: 'CountTo 数字动画',
             link: '/components/core/count-to',
+          },
+          {
+            text: 'DragVerify 拖动校验',
+            link: '/components/core/drag-verify',
+          },
+          {
+            text: 'Time 相对时间',
+            link: '/components/core/time',
+          },
+          {
+            text: 'Transition 组件切换动画',
+            link: '/components/core/transition',
+          },
+        ],
+      },
+      {
+        text: '函数式组件',
+        children: [
+          {
+            text: '前言',
+            link: '/components/functional/introduction',
+          },
+          {
+            text: 'ContextMenu 右键菜单',
+            link: '/components/functional/context-menu',
           },
         ],
       },
@@ -203,108 +255,6 @@ function createSidebar() {
           {
             text: 'Excel 表格导入导出',
             link: '/components/extend/excel',
-          },
-        ],
-      },
-      {
-        text: '常用组件',
-        children: [
-          {
-            text: 'Basic 箭头/标题/帮助',
-            link: '/components/basic',
-          },
-          {
-            text: 'List 数据列表',
-            link: '/components/list',
-          },
-          {
-            text: 'CardGrid 栅格卡片',
-            link: '/components/card-grid',
-          },
-          {
-            text: 'Page 页面容器',
-            link: '/components/page',
-          },
-          {
-            text: 'Icon 图标',
-            link: '/components/icon',
-          },
-          {
-            text: 'Form 表单',
-            link: '/components/form',
-          },
-          {
-            text: 'Table 表格',
-            link: '/components/table',
-          },
-          {
-            text: 'CollapseContainer 区域折叠容器',
-            link: '/components/collapse-container',
-          },
-          {
-            text: 'ScrollContainer 区域滚动容器',
-            link: '/components/scroll-container',
-          },
-          {
-            text: 'LazyContainer 区域延时加载容器',
-            link: '/components/lazy-container',
-          },
-          {
-            text: 'Progress 进度条',
-            link: '/components/progress',
-          },
-          {
-            text: 'CountDown 倒计时',
-            link: '/components/count-down',
-          },
-          {
-            text: 'ClickOutSide 监听点击区域',
-            link: '/components/click-out-side',
-          },
-          {
-            text: 'CountTo 数字动画',
-            link: '/components/count-to',
-          },
-          {
-            text: 'Description 详情',
-            link: '/components/desc',
-          },
-          {
-            text: 'Drawer 抽屉',
-            link: '/components/drawer',
-          },
-          {
-            text: 'Modal 弹窗',
-            link: '/components/modal',
-          },
-          {
-            text: 'Upload 文件上传',
-            link: '/components/upload',
-          },
-          {
-            text: 'Time 相对时间',
-            link: '/components/time',
-          },
-          {
-            text: 'Verify 拖动校验',
-            link: '/components/verify',
-          },
-          {
-            text: 'Transition 页面/组件切换动画',
-            link: '/components/transition',
-          },
-        ],
-      },
-      {
-        text: '函数式组件',
-        children: [
-          {
-            text: '前言',
-            link: '/components/functional/introduction',
-          },
-          {
-            text: 'ContextMenu',
-            link: '/components/functional/context-menu',
           },
         ],
       },
@@ -404,14 +354,3 @@ function createSidebar() {
     ],
   };
 }
-
-// /**
-//  * @type {(namespace:string,items:string[])=>string[]}
-//  */
-// function urlWrapper(namespace, items) {
-//   return items.map((item) => namespace + item);
-// }
-
-// function getGuildNav() {
-//   return urlWrapper('/guide', ['/']);
-// }

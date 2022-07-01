@@ -61,7 +61,7 @@ yarn dev
 
 **生产环境**支持现代浏览器，不支持 IE。
 
-| <img src="https://gitee.com/mirrors/Browser-Logos/raw/main/src/archive/internet-explorer_9-11/internet-explorer_9-11.svg" alt="IE" width="48px" height="48px"  /><p>IE</p> | <img src="https://gitee.com/mirrors/Browser-Logos/raw/main/src/edge/edge.svg" alt=" Edge" width="48px" height="48px" /><p>Edge</p> | <img src="https://gitee.com/mirrors/Browser-Logos/raw/main/src/firefox/firefox.svg" alt="Firefox" width="48px" height="48px" /><p>Firefox</p> | <img src="https://gitee.com/mirrors/Browser-Logos/raw/main/src/chrome/chrome.svg" alt="Chrome" width="48px" height="48px" /><p>Chrome</p> | <img src="https://gitee.com/mirrors/Browser-Logos/raw/main/src/safari/safari.svg" alt="Safari" width="48px" height="48px" /><p>Safari</p> |
+| <img src="/images/browser/internet-explorer_9-11.svg" alt="IE" width="48px" height="48px"  /><p>IE</p> | <img src="/images/browser/edge.svg" alt=" Edge" width="48px" height="48px" /><p>Edge</p> | <img src="/images/browser/firefox.svg" alt="Firefox" width="48px" height="48px" /><p>Firefox</p> | <img src="/images/browser/chrome.svg" alt="Chrome" width="48px" height="48px" /><p>Chrome</p> | <img src="/images/browser/safari.svg" alt="Safari" width="48px" height="48px" /><p>Safari</p> |
 | :-: | :-: | :-: | :-: | :-: |
 | not support | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
 
