@@ -157,7 +157,7 @@ export default defineComponent({
 | 名称          | 说明                         |
 | ------------- | ---------------------------- |
 | default       | 默认区域                     |
-| title         | 头部标题区域                 |
+| header         | 头部标题区域                 |
 | footer        | 底部区域，具有高优先级       |
 | prependFooter | 关闭按钮的左边位置           |
 | centerFooter  | 关闭按钮和确认按钮的中间位置 |

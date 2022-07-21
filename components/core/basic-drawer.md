@@ -175,6 +175,7 @@ export default defineComponent({
 | showCancelBtn  | `boolean`                | `true`  | 是否显示取消按钮           |
 | cancelOptions  | `object`                 | `{text: '取消',type:'default'}`       | 取消按钮(配置同 ElButton)  |
 
+
 ## Events
 
 | 事件           | 回调参数            | 说明                                       |
@@ -183,3 +184,15 @@ export default defineComponent({
 | cancel         | -                   | 点击关闭时回调                             |
 | register       | -                   | `useDrawer()`时，通过 `@register` 注册组件 |
 | visible-change | `(visible:boolean)` | 弹窗打开/关闭时触发                        |
+
+## Slots
+
+| 名称          | 说明                         |
+| ------------- | ---------------------------- |
+| default       | 默认区域                     |
+| header         | 头部标题区域                 |
+| toolbar         | 头部右侧工具栏区域                 |
+| footer         | 脚部区域                 |
+| prependFooter         | 脚部按钮左侧区域                 |
+| centerFooter         | 脚部按钮中间区域                 |
+| appendFooter         | 脚部按钮右侧区域                 |
