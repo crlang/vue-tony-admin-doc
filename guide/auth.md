@@ -162,7 +162,7 @@ export default defineComponent({
 
 **组件方式**
 
-具体查看[权限组件使用](../components/auth.md)
+具体查看[权限组件使用](/guide/auth)
 
 **指令方式**
 
@@ -337,7 +337,7 @@ export default defineComponent({
 
 **组件方式**
 
-具体查看[权限组件使用](../components/auth.md)
+具体查看[权限组件使用](/guide/auth)
 
 **指令方式**
 

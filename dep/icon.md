@@ -66,7 +66,7 @@
 
 ## Iconify 图标
 
-使用方式请参考 [Icon 组件](../components/icon.md)
+使用方式请参考 [Icon 组件](/dep/icon)
 
 项目中使用到的是 [vite-plugin-purge-icons](https://github.com/antfu/purge-icons/blob/main/packages/vite-plugin-purge-icons/README.md) 这个插件来进行图标实现。
 
