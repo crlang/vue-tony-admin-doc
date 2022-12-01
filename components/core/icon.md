@@ -21,6 +21,7 @@ Icon 的值可以在下方图标库中查看
 ```vue
 <template>
   <Icon name="ep:view" />
+  <Icon name="close|svg" />
 </template>
 
 <script>
@@ -35,16 +36,18 @@ export default defineComponent({
 
 ## Props
 
-| 属性   | 类型            | 默认值  | 说明                             |
-| ------ | --------------- | ------- | -------------------------------- |
-| name   | `string`        | -       | 图标名                           |
-| color  | `string`        | -       | 图标颜色                         |
-| size   | `number,string` | `16`    | 图标大小                         |
-| spin   | `boolean`       | `false` | 图标是否带旋转动画               |
-| prefix | `string`        | -       | 图标前缀，如 `ep:view` 中的 `ep` |
+| 属性   | 类型      | 默认值  | 说明                             |
+| ------ | --------- | ------- | -------------------------------- |
+| name   | `string`  | -       | 图标名                           |
+| color  | `string`  | -       | 图标颜色，默认继承               |
+| size   | `number`  | -       | 图标大小，默认继承               |
+| spin   | `boolean` | `false` | 图标是否带旋转动画               |
+| prefix | `string`  | -       | 图标前缀，如 `ep:view` 中的 `ep` |
 
 ::: tip 温馨提示
 
 如果 `name` 值填写了完整带前缀的 `ep:view` ，那么 `prefix` 不需要填写 `ep`
+
+如果 `name` 值加了`\|svg`后缀，将显示本地 svg 图标，显示效果同 [ SvgIcon 组件](./svg-icon)
 
 :::

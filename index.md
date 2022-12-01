@@ -20,5 +20,5 @@ features:
     details: 完整的前后端权限方案，实现各种场景下的权限验证
   - title: 🌐 国际化
     details: 高效通用的国际化方案，只需简单配置即可实现多国语言
-footer: MIT Licensed | Copyright © 2021-至今 CRLang
+footer: MIT Licensed | Power by vben | Copyright CRLANG 2022
 ---

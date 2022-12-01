@@ -11,8 +11,8 @@
 遇到问题,可以先从以下几个方面查找
 
 1. 对应模块的 GitHub 仓库 [issue](https://github.com/crlang/vue-tony-admin/issues) 搜索
-2. 从[google](https://www.google.com)搜索问题
-3. 从[百度](https://www.百度.com)搜索问题
+2. 从[Google](https://www.google.com)搜索问题
+3. 从[百度](https://www.baidu.com)搜索问题
 4. 在下面列表找不到问题可以到 issue 提问 [issues](https://github.com/crlang/vue-tony-admin/issues)
 5. 如果不是问题类型的，需要讨论的，请到 [discussions](https://github.com/crlang/vue-tony-admin/discussions) 讨论
 
@@ -37,7 +37,6 @@ tony-admin 的项目配置默认是缓存在 `localStorage` 内，所以版本�
 ## babel-plugin-import 问题
 
 项目使用的是 vite 的插件 [vite-plugin-style-import](https://github.com/anncwb/vite-plugin-style-import) 来进行按需引入。在 vite 内没必要使用 babel-plugin-import 再转换一次代码了。
-
 
 ## 添加菜单后没显示
 
@@ -69,8 +68,8 @@ tony-admin 的项目配置默认是缓存在 `localStorage` 内，所以版本�
 - 2. 注释 `vite-plugin-imagemin` 插件引用
 
 ```ts
-import { configImageminPlugin } from './imagemin';
-VITE_USE_IMAGEMIN && vitePlugins.push(configImageminPlugin());
+import { configImageminPlugin } from './imagemin'
+VITE_USE_IMAGEMIN && vitePlugins.push(configImageminPlugin())
 ```
 
 ## 在 Linux 内依赖安装失败
@@ -162,8 +161,8 @@ gpgcheck=0
 1. 使用了 ctx 这个变量，ctx 本身未暴露出在实例类型内，尤大也是说了不要用这个属性。这个属性只是用于内部使用。
 
 ```ts
-import { getCurrentInstance } from 'vue';
-getCurrentInstance().ctx.xxxx;
+import { getCurrentInstance } from 'vue'
+getCurrentInstance().ctx.xxxx
 ```
 
 ## safari 问题
@@ -271,7 +270,7 @@ gzip 可以由服务器直接开启。如果是这样，前端不需要构建 `.
 
 后续 `vue-router` 可能会提供配置项来关闭警告
 
-**2.6.1及以上版本已移除此警告**
+**2.6.1 及以上版本已移除此警告**
 
 ```ts
 [Vue Router warn]: No match found for location with path "xxxx"
@@ -304,10 +303,10 @@ at Extract (xxx)
 
 ```ts
 // 正确的
-import { cloneDeep } from 'lodash-es';
+import { cloneDeep } from 'lodash-es'
 
 // 报错
-import _ from 'lodash-es';
+import _ from 'lodash-es'
 ```
 
 3. 检查样式是否使用变量及有没有引入对应的变量文件

@@ -1,6 +1,6 @@
 # 菜单
 
-项目菜单配置存放于 [src/router/menus](https://github.com/crlang/vue-tony-admin/tree/main/src/router/menus) 下面
+项目菜单配置存放于 [src/router/menus](https://github.com/crlang/vue-tony-admin/blob/main/src/router/menus) 下面
 
 ::: tip 提示
 
@@ -13,26 +13,26 @@
 ```ts
 export interface Menu {
   //  菜单名
-  name: string;
+  name: string
   // 菜单图标,如果没有，则会尝试使用route.meta.icon
-  icon?: string;
+  icon?: string
   // 菜单路径
-  path: string;
+  path: string
   // 是否禁用
-  disabled?: boolean;
+  disabled?: boolean
   // 子菜单
-  children?: Menu[];
+  children?: Menu[]
   // 菜单标签设置
   tag: {
     // 为true则显示小圆点
-    dot: boolean;
+    dot: boolean
     // 内容
-    content: string';
+    content: string
     // 类型
-    type: 'error' | 'primary' | 'warn' | 'success';
-  };
+    type: 'error' | 'primary' | 'warn' | 'success'
+  }
   // 是否隐藏菜单
-  hideMenu?: boolean;
+  hideMenu?: boolean
 }
 ```
 
@@ -47,8 +47,8 @@ children 的 path 字段不需要以`/`开头
 :::
 
 ```ts
-import type { MenuModule } from '@/router/types';
-import { t } from '@/hooks/web/useI18n';
+import type { MenuModule } from '@/router/types'
+import { t } from '@/hooks/web/useI18n'
 const menu: MenuModule = {
   orderNo: 10,
   menu: {
@@ -58,16 +58,16 @@ const menu: MenuModule = {
     children: [
       {
         path: 'analysis',
-        name: t('routes.dashboard.analysis'),
+        name: t('routes.dashboard.analysis')
       },
       {
         path: 'workbench',
-        name: t('routes.dashboard.workbench'),
-      },
-    ],
-  },
-};
-export default menu;
+        name: t('routes.dashboard.workbench')
+      }
+    ]
+  }
+}
+export default menu
 ```
 
 以上模块会转化成以下结构
@@ -91,9 +91,9 @@ export default menu;
 
 ## 新增菜单
 
-直接在 [src/router/menus/modules](https://github.com/crlang/vue-tony-admin/tree/main/src/router/menus/modules) 内新增一个模块文件即可。
+直接在 [src/router/menus/modules](https://github.com/crlang/vue-tony-admin/blob/main/src/router/menus/modules) 内新增一个模块文件即可。
 
-不需要手动引入，放在[src/router/routes/menus/modules](https://github.com/crlang/vue-tony-admin/tree/main/src/router/menus/modules) 内的文件会自动被加载。
+不需要手动引入，放在[src/router/routes/menus/modules](https://github.com/crlang/vue-tony-admin/blob/main/src/router/menus/modules) 内的文件会自动被加载。
 
 ## 菜单排序
 

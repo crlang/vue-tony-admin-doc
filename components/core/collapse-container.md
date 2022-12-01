@@ -27,12 +27,12 @@ export default defineComponent({
 
 ## Props
 
-| 属性        | 类型              | 默认值 | 说明             |
-| ----------- | ----------------- | ------ | ---------------- |
-| title       | `string\|slot`    | -      | 标题             |
-| helpMessage | `string,string[]` | -      | 标题右侧温馨提醒 |
-| canExpan    | `boolean`         | `true`   | 是否可以展开     |
-| loading     | `boolean`         | `false`  | 显示加载骨架     |
+| 属性        | 类型              | 默认值  | 说明             |
+| ----------- | ----------------- | ------- | ---------------- |
+| title       | `string\|slot`    | -       | 标题             |
+| helpMessage | `string,string[]` | -       | 标题右侧温馨提示 |
+| canExpan    | `boolean`         | `true`  | 是否可以展开     |
+| loading     | `boolean`         | `false` | 显示加载骨架     |
 
 ## Slots
 

@@ -6,7 +6,7 @@
 
 默认使用 Sass 作为预处理语言，建议在使用前或者遇到疑问时学习一下 [Sass](https://sass-lang.com/) 的相关特性（如果想获取基础的 CSS 知识或查阅属性，请参考 [MDN 文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)）。
 
-项目中使用的通用样式，都存放于 [src/design/](https://github.com/crlang/vue-tony-admin/tree/main/src/design) 下面。
+项目中使用的通用样式，都存放于 [src/design/](https://github.com/crlang/vue-tony-admin/blob/main/src/design) 下面。
 
 ```bash
 .
@@ -65,7 +65,7 @@ windcss 目前会造成本地开发内存溢出，所以后续可能会考虑切
 <style scoped></style>
 ```
 
-::: tip 温馨提醒
+::: tip 温馨提示
 
 使用 scoped 后，父组件的样式将不会渗透到子组件中。不过一个子组件的根节点会同时受其父组件的 scoped CSS 和子组件的 scoped CSS 的影响。这样设计是为了让父组件可以从布局的角度出发，调整其子组件根元素的样式。
 
@@ -83,26 +83,26 @@ windcss 目前会造成本地开发内存溢出，所以后续可能会考虑切
 
 ```vue
 <style scoped>
-  /* deep selectors */
-  ::v-deep(.foo) {
-  }
-  /* shorthand */
-  :deep(.foo) {
-  }
+/* deep selectors */
+::v-deep(.foo) {
+}
+/* shorthand */
+:deep(.foo) {
+}
 
-  /* targeting slot content */
-  ::v-slotted(.foo) {
-  }
-  /* shorthand */
-  :slotted(.foo) {
-  }
+/* targeting slot content */
+::v-slotted(.foo) {
+}
+/* shorthand */
+:slotted(.foo) {
+}
 
-  /* one-off global rule */
-  ::v-global(.foo) {
-  }
-  /* shorthand */
-  :global(.foo) {
-  }
+/* one-off global rule */
+::v-global(.foo) {
+}
+/* shorthand */
+:global(.foo) {
+}
 </style>
 ```
 
@@ -116,31 +116,31 @@ windcss 目前会造成本地开发内存溢出，所以后续可能会考虑切
 </template>
 
 <script>
-  import { useCSSModule } from 'vue';
+import { useCSSModule } from 'vue'
 
-  export default {
-    setup(props, context) {
-      const $style = useCSSModule();
-      const moduleAStyle = useCSSModule('moduleA');
-      return {
-        $style,
-        moduleAStyle,
-      };
-    },
-  };
+export default {
+  setup(props, context) {
+    const $style = useCSSModule()
+    const moduleAStyle = useCSSModule('moduleA')
+    return {
+      $style,
+      moduleAStyle
+    }
+  }
+}
 </script>
 
 <style lang="scss" module>
-  .span1 {
-    color: green;
-    font-size: 30px;
-  }
+.span1 {
+  color: green;
+  font-size: 30px;
+}
 </style>
 
 <style lang="scss" module="moduleA">
-  .span1 {
-    color: green;
-    font-size: 30px;
-  }
+.span1 {
+  color: green;
+  font-size: 30px;
+}
 </style>
 ```

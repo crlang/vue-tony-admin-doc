@@ -27,13 +27,15 @@ node >= 16.x
 如果您使用的 IDE 是[vscode](https://code.visualstudio.com/)(推荐)的话，可以安装以下工具来提高开发效率及代码格式化
 
 **推荐**
+
 - [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) - vue3 开发必备
 - [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) - vue3 开发必备
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - TS代码检查
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - TS代码格式化
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - TS 代码检查
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - TS 代码格式化
 - [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) - CSS/SASS 格式化
 
 **可选**
+
 - [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv) - .env 文件 高亮
 - [Iconify IntelliSense](https://marketplace.visualstudio.com/items?itemName=antfu.iconify) - Iconify 图标插件
 - [I18n-ally](https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally) - i18n 插件
@@ -146,7 +148,6 @@ yarn install
 
 :::
 
-
 ## npm script
 
 ```bash
@@ -159,7 +160,7 @@ yarn install
   "dev": "vite",
   # 构建项目
   "build": "cross-env NODE_ENV=production vite build && esno ./build/script/postBuild.ts",
-  # 构建项目-一个演示的构建拓展
+  # 构建项目-一个演示的构建拓展，需要项目根目录存在 .env.site.local
   "build:site": "cross-env NODE_ENV=production vite build --mode site && esno ./build/script/postBuild.ts",
   # 构建项目测试
   "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
@@ -203,15 +204,12 @@ yarn install
 
 该命令会先删除 `node_modules`、`yarn.lock`、`package.lock.json` 后再进行依赖重新安装（安装速度会明显变慢）。
 
-
 ## 目录说明
 
 ```bash
 
 .
 ├── build # 打包脚本相关
-│   ├── config # 配置文件
-│   ├── generate # 生成器
 │   ├── script # 脚本
 │   └── vite # vite配置
 ├── mock # mock文件夹
@@ -219,7 +217,8 @@ yarn install
 ├── src # 主目录
 │   ├── api # 接口文件
 │   ├── assets # 资源文件
-│   │   ├── icons # icon sprite 图标文件夹
+│   │   ├── fonts # 字体文件夹
+│   │   ├── icons # svg icon 图标文件夹
 │   │   ├── images # 项目存放图片的文件夹
 │   │   └── svg # 项目存放svg图片的文件夹
 │   ├── components # 公共组件
@@ -235,26 +234,21 @@ yarn install
 │   ├── layouts # 布局文件
 │   │   ├── default # 默认布局
 │   │   ├── iframe # iframe布局
-│   │   └── page # 页面布局
-│   ├── locales # 多语言
+│   ├── locales # 多语言(pending)
 │   ├── logics # 逻辑
 │   ├── main.ts # 主入口
 │   ├── router # 路由配置
 │   ├── settings # 项目配置
 │   │   ├── componentSetting.ts # 组件配置
 │   │   ├── designSetting.ts # 样式配置
-│   │   ├── encryptionSetting.ts # 加密配置
-│   │   ├── localeSetting.ts # 多语言配置
+│   │   ├── localeSetting.ts # 多语言配置(pending)
 │   │   ├── projectSetting.ts # 项目配置
 │   │   └── siteSetting.ts # 站点配置
 │   ├── store # 数据仓库
 │   ├── utils # 工具类
 │   └── views # 页面
 ├── test # 测试
-│   └── server # 测试用到的服务
-│       ├── api # 测试服务器
-│       ├── upload # 测试上传服务器
-│       └── websocket # 测试ws服务器
+│   └── server # 测试服务器
 ├── types # 类型文件
 ├── .eslintrc.js # eslint配置文件
 ├── .prettierrc # prettier配置文件

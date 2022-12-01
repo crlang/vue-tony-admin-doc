@@ -16,7 +16,7 @@
 ```vue
 <template>
   <div class="p-4">
-    <BasicTable title="基础示例" titleHelpMessage="温馨提醒" :columns="columns" :loading="loading" :api="demoListApi">
+    <BasicTable title="基础示例" titleHelpMessage="温馨提示" :columns="columns" :loading="loading" :api="demoListApi">
       <template #toolbar>
         <el-button @click="changeLoading">操作按钮</el-button>
       </template>
@@ -363,9 +363,9 @@ export default defineComponent({
 | columns | `array` | - | 表格列数据，传入[BasicColumn](#basiccolumn)数组 |
 | api | `(...arg: any) => Promise<any>` | - | 请求接口，可以直接将`src/api`内的`Promise`接口函数直接传入 |
 | title | `string` | - | 表格标题 |
-| titleHelpMessage | `string\|string[]` | - | 表格标题右侧温馨提醒 |
+| titleHelpMessage | `string\|string[]` | - | 表格标题右侧温馨提示 |
 | showTableSetting | `boolean` | `false` | 是否显示表格设置 |
-| tableSetting | `object` | - | 表格工具配置，可选： redo(刷新)、size(密度)、fullScreen(全屏) |
+| tableSetting | `object` | - | 表格工具配置，可选： redo(刷新)、size(密度)、fullscreen(全屏) |
 | fetchSetting | `object` | - | 接口请求配置，配置请参考 `settings/componentSetting/fetchSetting` |
 | autoCreateKey | `boolean` | `true` | 是否自动生成 key |
 | beforeFetchFn | `(data: Recordable) => Recordable` | - | 请求之前对参数进行处理 |
@@ -493,7 +493,6 @@ export default defineComponent({
 
 </details>
 
-
 ## BasicColumn
 
 ::: tip 温馨提示
@@ -516,12 +515,12 @@ export default defineComponent({
 
 ## Slots
 
-| 名称       | 说明                     |
-| ---------- | ------------------------ |
-| title | 表格标题         |
-| toolbar    | 表格顶部右侧区域         |
-| headerTop  | 表格顶部上方区域 |
-| headerBottom | 表格顶部下方区域         |
+| 名称         | 说明             |
+| ------------ | ---------------- |
+| title        | 表格标题         |
+| toolbar      | 表格顶部右侧区域 |
+| headerTop    | 表格顶部上方区域 |
+| headerBottom | 表格顶部下方区域 |
 
 ### useTable()
 
@@ -544,21 +543,21 @@ const [register, methods] = useTable()
 
 `methods` 支持上方[Methods](#methods)全部方法，以及下方的方法
 
-| 名称 | 参数 | 说明 |
-| --- | --- | --- |
-| getFormRef | - | 操作 `BasicForm` 组件实例，支持 `BasicForm` 的方法 |
+| 名称       | 参数 | 说明                                               |
+| ---------- | ---- | -------------------------------------------------- |
+| getFormRef | -    | 操作 `BasicForm` 组件实例，支持 `BasicForm` 的方法 |
 
 </details>
 
 **TableActionItem**
 
-| 名称   | 参数          | 说明                              |
-| ------ | ------------- | --------------------------------- |
-| text   | `string`      | 当前单元格的内容                  |
-| index  | `number`      | 当前单元格所在索引                |
-| record | `Record`      | 当前行的数据                      |
+| 名称   | 参数          | 说明                                       |
+| ------ | ------------- | ------------------------------------------ |
+| text   | `string`      | 当前单元格的内容                           |
+| index  | `number`      | 当前单元格所在索引                         |
+| record | `Record`      | 当前行的数据                               |
 | scope  | `scopeInfo`   | 继承官方内容，内容为 `{row,column,$index}` |
-| column | `BasicColumn` | 当前列的数据                      |
+| column | `BasicColumn` | 当前列的数据                               |
 
 **TableColumnRender**
 

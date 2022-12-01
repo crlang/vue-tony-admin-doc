@@ -2,11 +2,15 @@
 
 ## 简介
 
-[Vue-Tony-Admin](https://github.com/crlang/vue-tony-admin) 是一个基于 [Vue3.0](https://github.com/vuejs/vue-next)、[Vite](https://github.com/vitejs/vite)、 [Element-Plus](https://github.com/element-plus/element-plus)、[TypeScript](https://www.typescriptlang.org/) 的 Admin 解决方案，目标是为开发各类大中小型项目提供开箱即用的解决方案。包括二次封装组件、工具、钩子、动态菜单、页面权限校验、按钮级别权限控制等功能。
+[Vue-Tony-Admin](https://github.com/crlang/vue-tony-admin) 是一个基于 [Vue3.0](https://github.com/vuejs/vue-next)、[Vite](https://github.com/vitejs/vite)、 [Element-Plus](https://github.com/element-plus/element-plus)、[TypeScript](https://www.typescriptlang.org/) 的 Admin 解决方案，目标是为开发各类大中小型项目提供开箱即用的解决方案。包括二次封装组件、工具、钩子、动态菜单、页面权限校验、按钮级别权限控制、暗黑模式等功能。
 
 项目会使用前端较新的技术栈，可以作为项目的启动模版，以帮助你快速搭建企业级中后台产品原型。也可以作为一个示例，用于学习 `Vue3`、`TypeScript`、`Sass`、`Vite2` 等主流技术。该项目会持续跟进最新技术，并将其应用在项目中。
 
-项目是参考 Vben 的 antdv 进行开发， **项目适配了最新 Element Plus 相关组件，并添加了 Sass 支持**。
+项目是依据 `Vben` 的 `Ant Design Vue` 进行重新调校开发，历经**数百次版本迭代**，`Tony Admin` 更轻，更快，更新，对于上手 `Element Plus` ，`Tony Admin` 是您一个很好的选择。
+
+同时， **Tony Admin 支持最新 Element Plus 版本及对 Sass 支持**。
+
+如果您对 `antdv` 更熟悉，`Vben Admin` 也是一个不错的选择。
 
 ## 文档与翻译
 

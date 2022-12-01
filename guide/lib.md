@@ -16,12 +16,12 @@ yarn add element-plus
 ### 全局使用
 
 ```ts
-import { createApp } from 'vue';
-import App from './App.vue';
-import ElementPlus from 'element-plus';
-const app = createApp(App);
-app.use(ElementPlus);
-app.mount('#app');
+import { createApp } from 'vue'
+import App from './App.vue'
+import ElementPlus from 'element-plus'
+const app = createApp(App)
+app.use(ElementPlus)
+app.mount('#app')
 ```
 
 ### 局部使用
@@ -32,13 +32,13 @@ app.mount('#app');
 </template>
 
 <script>
-  import { defineComponent } from 'vue';
-  import { ElButton } from 'element-plus';
-  export default defineComponent({
-    components: {
-      ElButton,
-    },
-  });
+import { defineComponent } from 'vue'
+import { ElButton } from 'element-plus'
+export default defineComponent({
+  components: {
+    ElButton
+  }
+})
 </script>
 ```
 

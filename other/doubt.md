@@ -8,7 +8,6 @@
 
 `@/settings` 等同于 `src/settings`
 
-
 ## 为什么在本地没有按需引入组件库样式，在生产才引入
 
 在 main.ts 内可以看到，本地开发会全量引入 antd.less，vite-plugin-style-import 在本地是没有作用的。
@@ -18,25 +17,25 @@
 ```ts
 // src/main.ts
 if (import.meta.env.DEV) {
-  import('ant-design-vue/dist/antd.less');
+  import('ant-design-vue/dist/antd.less')
 }
 
 // build/vite/plugin/styleImport
-import styleImport from 'vite-plugin-style-import';
+import styleImport from 'vite-plugin-style-import'
 export function configStyleImportPlugin(isBuild: boolean) {
-  if (!isBuild) return [];
+  if (!isBuild) return []
   const styleImportPlugin = styleImport({
     libs: [
       {
         libraryName: 'ant-design-vue',
         esModule: true,
         resolveStyle: (name) => {
-          return `ant-design-vue/es/${name}/style/index`;
-        },
-      },
-    ],
-  });
-  return styleImportPlugin;
+          return `ant-design-vue/es/${name}/style/index`
+        }
+      }
+    ]
+  })
+  return styleImportPlugin
 }
 ```
 

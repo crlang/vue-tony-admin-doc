@@ -10,7 +10,7 @@
 
 开发环境时候，接口地址在项目根目录下
 
-[.env.development](https://github.com/crlang/vue-tony-admin/tree/main/.env.development) 文件配置
+[.env.development](https://github.com/crlang/vue-tony-admin/blob/main/.env.development) 文件配置
 
 ```bash
 # vite 本地跨域代理
@@ -30,7 +30,7 @@ VITE_GLOB_API_URL=/api
 
 如果你在 `src/api/` 下面的接口为下方代码，且 **.env.development** 文件配置如下注释，则在控制台看到的地址为 `http://localhost:3100/basic-api/login`。
 
-由于 `/basic-api` 匹配到了设置的 `VITE_PROXY`，所以上方实际是请求 **http://localhost:3000/login**，这样同时也解决了跨域问题。（**3100**为项目端口号，**http://localhost:3000**为PROXY代理的目标地址）
+由于 `/basic-api` 匹配到了设置的 `VITE_PROXY`，所以上方实际是请求 **http://localhost:3000/login**，这样同时也解决了跨域问题。（**3100**为项目端口号，**http://localhost:3000**为 PROXY 代理的目标地址）
 
 ```ts
 // .env.development
@@ -38,7 +38,7 @@ VITE_GLOB_API_URL=/api
 // VITE_GLOB_API_URL=/basic-api
 
 enum Api {
-  Login = '/login',
+  Login = '/login'
 }
 
 /**
@@ -48,8 +48,8 @@ export function loginApi(params: LoginParams) {
   return http.request<LoginResultModel>({
     url: Api.Login,
     method: 'POST',
-    params,
-  });
+    params
+  })
 }
 ```
 
@@ -98,15 +98,15 @@ server: {
 
 ## 生产环境
 
-生产环境接口地址在项目根目录下 [.env.production](https://github.com/crlang/vue-tony-admin/tree/main/.env.production) 文件配置。
+生产环境接口地址在项目根目录下 [.env.production](https://github.com/crlang/vue-tony-admin/blob/main/.env.production) 文件配置。
 
 生产环境接口地址值需要修改 **VITE_GLOB_API_URL**，如果出现跨域问题，可以使用 nginx 或者后台开启 cors 进行处理
 
 ::: tip 打包后如何进行地址修改?
 
-**VITE_GLOB\_\*** 开头的变量会在打包的时候注入 **\_app.config.js** 文件内。
+**VITE_GLOB\_\*** 开头的变量会在打包的时候注入 **app.config.js** 文件内。
 
-在 **dist/\_app.config.js** 修改相应的接口地址后刷新页面即可，不需要在根据不同环境打包多次，一次打包可以用于多个不同接口环境的部署。
+在 **dist/app.config.js** 修改相应的接口地址后刷新页面即可，不需要在根据不同环境打包多次，一次打包可以用于多个不同接口环境的部署。
 
 :::
 
@@ -120,7 +120,7 @@ server: {
 4. 获取服务端返回数据
 5. 更新 data；
 
-接口统一存放于 [src/api/](https://github.com/crlang/vue-tony-admin/tree/main/src/api) 下面管理
+接口统一存放于 [src/api/](https://github.com/crlang/vue-tony-admin/blob/main/src/api) 下面管理
 
 以登陆接口为例:
 
@@ -133,25 +133,25 @@ server: {
 :::
 
 ```ts
-import { defHttp } from '@/utils/http/axios';
-import { LoginParams, LoginResultModel } from './model/userModel';
+import { defHttp } from '@/utils/http/axios'
+import { LoginParams, LoginResultModel } from './model/userModel'
 
 enum Api {
-  Login = '/login',
+  Login = '/login'
 }
 
 export function loginApi(params: LoginParams) {
   return defHttp.request<LoginResultModel>({
     url: Api.Login,
     method: 'POST',
-    params,
-  });
+    params
+  })
 }
 ```
 
 ## axios 配置
 
-**axios** 请求封装存放于 [src/utils/http/axios](https://github.com/crlang/vue-tony-admin/tree/main/src/utils/http/axios) 文件夹内部
+**axios** 请求封装存放于 [src/utils/http/axios](https://github.com/crlang/vue-tony-admin/blob/main/src/utils/http/axios) 文件夹内部
 
 除 `index.ts` 文件内容需要根据项目自行修改外，其余文件无需修改
 
@@ -198,9 +198,9 @@ const axios = new VAxios({
     //  是否加入时间戳
     joinTime: true,
     // 忽略重复请求
-    ignoreCancelToken: true,
-  },
-});
+    ignoreCancelToken: true
+  }
+})
 ```
 
 **transform 数据处理说明**
@@ -416,20 +416,20 @@ const transform: AxiosTransform = {
 
 ### 多个接口地址
 
-当项目中需要用到多个接口地址时, 可以在 [src/utils/http/axios/index.ts](https://github.com/crlang/vue-tony-admin/tree/main/src/utils/http/axios/index.ts) 导出多个 axios 实例
+当项目中需要用到多个接口地址时, 可以在 [src/utils/http/axios/index.ts](https://github.com/crlang/vue-tony-admin/blob/main/src/utils/http/axios/index.ts) 导出多个 axios 实例
 
 ```ts
 // 目前只导出一个默认实例，接口地址对应的是环境变量中的 VITE_GLOB_API_URL 接口地址
-export const defHttp = createAxios();
+export const defHttp = createAxios()
 
 // 需要有其他接口地址的可以在后面添加
 
 // other api url
 export const otherHttp = createAxios({
   requestOptions: {
-    apiUrl: 'xxx',
-  },
-});
+    apiUrl: 'xxx'
+  }
+})
 ```
 
 ### 删除请求 URL 携带的时间戳参数
@@ -440,9 +440,9 @@ export const otherHttp = createAxios({
 const axios = new VAxios({
   requestOptions: {
     // 是否加入时间戳
-    joinTime: false,
-  },
-});
+    joinTime: false
+  }
+})
 ```
 
 ## Mock 服务
@@ -470,11 +470,11 @@ Mock 数据是前端开发过程中必不可少的一环，是分离前后端开
 例:
 
 ```ts
-import { MockMethod } from 'vite-plugin-mock';
-import { resultPageSuccess } from '../_util';
+import { MockMethod } from 'vite-plugin-mock'
+import { resultPageSuccess } from '../_util'
 
 const demoList = (() => {
-  const result: any[] = [];
+  const result: any[] = []
   for (let index = 0; index < 60; index++) {
     result.push({
       id: `${index}`,
@@ -483,11 +483,11 @@ const demoList = (() => {
       address: '@city()',
       name: '@cname()',
       'no|100000-10000000': 100000,
-      'status|1': ['正常', '启用', '停用'],
-    });
+      'status|1': ['正常', '启用', '停用']
+    })
   }
-  return result;
-})();
+  return result
+})()
 
 export default [
   {
@@ -495,11 +495,11 @@ export default [
     timeout: 1000,
     method: 'get',
     response: ({ query }) => {
-      const { page = 1, pageSize = 20 } = query;
-      return resultPageSuccess(page, pageSize, demoList);
-    },
-  },
-] as MockMethod[];
+      const { page = 1, pageSize = 20 } = query
+      return resultPageSuccess(page, pageSize, demoList)
+    }
+  }
+] as MockMethod[]
 ```
 
 ::: tip
@@ -531,7 +531,7 @@ mock 的值可以直接使用 [mockjs](https://github.com/nuysoft/Mock/wiki) 的
 
 #### util 说明
 
-可在 [代码](https://github.com/crlang/vue-tony-admin/tree/main/mock/_util.ts) 中查看
+可在 [代码](https://github.com/crlang/vue-tony-admin/blob/main/mock/_util.ts) 中查看
 
 ::: tip
 
@@ -544,11 +544,11 @@ util 只作为服务处理结果数据使用。可以不用，如需使用可自
 在 `src/api` 下面，如果接口匹配到 mock，则会优先使用 mock 进行响应
 
 ```ts
-import { defHttp } from '@/utils/http/axios';
-import { LoginParams, LoginResultModel } from './model/userModel';
+import { defHttp } from '@/utils/http/axios'
+import { LoginParams, LoginResultModel } from './model/userModel'
 
 enum Api {
-  Login = '/login',
+  Login = '/login'
 }
 
 /**
@@ -559,12 +559,12 @@ export function loginApi(params: LoginParams) {
     {
       url: Api.Login,
       method: 'POST',
-      params,
+      params
     },
     {
-      errorMessageMode: 'modal',
+      errorMessageMode: 'modal'
     }
-  );
+  )
 }
 // 会匹配到上方的
 export default [
@@ -573,10 +573,10 @@ export default [
     timeout: 1000,
     method: 'POST',
     response: ({ body }) => {
-      return resultPageSuccess({});
-    },
-  },
-] as MockMethod[];
+      return resultPageSuccess({})
+    }
+  }
+] as MockMethod[]
 ```
 
 #### 接口有了，如何去掉 mock
@@ -592,10 +592,10 @@ export default [
     timeout: 1000,
     method: 'POST',
     response: ({ body }) => {
-      return resultPageSuccess({});
-    },
-  },
-] as MockMethod[];
+      return resultPageSuccess({})
+    }
+  }
+] as MockMethod[]
 ```
 
 ### 线上 mock
@@ -615,33 +615,33 @@ export default [
 1. 修改 .env.production 文件内的 `VITE_USE_MOCK` 的值为 true
 
 ```ts
-VITE_USE_MOCK = true;
+VITE_USE_MOCK = true
 ```
 
-2. 在 [mock/\_createProductionServer.ts](https://github.com/crlang/vue-tony-admin/tree/main/mock/_createProductionServer.ts) 文件中引入需要的 mock 文件
+2. 在 [mock/\_createProductionServer.ts](https://github.com/crlang/vue-tony-admin/blob/main/mock/_createProductionServer.ts) 文件中引入需要的 mock 文件
 
 ```ts
-import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer';
+import { createProdMockServer } from 'vite-plugin-mock/es/createProdMockServer'
 
-const modules = import.meta.globEager('./**/*.ts');
+const modules = import.meta.globEager('./**/*.ts')
 
-const mockModules: any[] = [];
+const mockModules: any[] = []
 Object.keys(modules).forEach((key) => {
   if (key.includes('/_')) {
-    return;
+    return
   }
-  mockModules.push(...modules[key].default);
-});
+  mockModules.push(...modules[key].default)
+})
 
 export function setupProdMockServer() {
-  createProdMockServer(mockModules);
+  createProdMockServer(mockModules)
 }
 ```
 
-3. 在 [build/vite/plugin/mock.ts](https://github.com/crlang/vue-tony-admin/tree/main/build/vite/plugin/mock.ts) 里面引入
+3. 在 [build/vite/plugin/mock.ts](https://github.com/crlang/vue-tony-admin/blob/main/build/vite/plugin/mock.ts) 里面引入
 
 ```ts
-import { viteMockServe } from 'vite-plugin-mock';
+import { viteMockServe } from 'vite-plugin-mock'
 
 export function configMockPlugin(isBuild: boolean) {
   return viteMockServe({
@@ -649,8 +649,8 @@ export function configMockPlugin(isBuild: boolean) {
       import { setupProdMockServer } from '../mock/_createProductionServer';
 
       setupProdMockServer();
-      `,
-  });
+      `
+  })
 }
 ```
 

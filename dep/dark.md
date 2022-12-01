@@ -22,9 +22,9 @@ antdDarkThemePlugin({
     'text-color-secondary': '#8b949e',
     'border-color-base': '#303030',
     'item-active-bg': '#111b26',
-    'app-content-background': 'rgb(255 255 255 / 4%)',
-  },
-});
+    'app-content-background': 'rgb(255 255 255 / 4%)'
+  }
+})
 ```
 
 ## 切换
@@ -32,17 +32,17 @@ antdDarkThemePlugin({
 只需要使用 [vite-plugin-theme](https://github.com/anncwb/vite-plugin-theme) 提供的函数来进行切换即可
 
 ```ts
-import { darkCssIsReady, loadDarkThemeCss } from 'vite-plugin-theme/es/client';
+import { darkCssIsReady, loadDarkThemeCss } from 'vite-plugin-theme/es/client'
 
 export async function updateDarkTheme(mode: string | null = 'light') {
-  const htmlRoot = document.getElementById('htmlRoot');
+  const htmlRoot = document.getElementById('htmlRoot')
   if (mode === 'dark') {
     if (import.meta.env.PROD && !darkCssIsReady) {
-      await loadDarkThemeCss();
+      await loadDarkThemeCss()
     }
-    htmlRoot?.setAttribute('data-theme', 'dark');
+    htmlRoot?.setAttribute('data-theme', 'dark')
   } else {
-    htmlRoot?.setAttribute('data-theme', 'light');
+    htmlRoot?.setAttribute('data-theme', 'light')
   }
 }
 ```

@@ -191,16 +191,16 @@ VITE_PUBLIC_PATH=/xxx/
 - **hash** 默认会在 url 后面拼接`#`
 - **history** 则不会，不过 `history` 需要服务器配合
 
-可在 [src/router/index.ts](https://github.com/crlang/vue-tony-admin/tree/main/src/router/index.ts) 内进行 mode 修改
+可在 [src/router/index.ts](https://github.com/crlang/vue-tony-admin/blob/main/src/router/index.ts) 内进行 mode 修改
 
 ```ts
-import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 
 createRouter({
   history: createWebHashHistory(),
   // or
-  history: createWebHistory(),
-});
+  history: createWebHistory()
+})
 ```
 
 ### history 路由模式下服务端配置

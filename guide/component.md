@@ -23,17 +23,13 @@ export default defineComponent({
 **tsx 文件内不能使用全局注册组件**
 
 ```jsx
-import { ElButton } from 'element-plus';
+import { ElButton } from 'element-plus'
 
 export default defineComponent({
   setup() {
-    return () => (
-      <ElButton>
-        { 'Yo' }
-      </ElButton>
-    );
-  },
-});
+    return () => <ElButton>{'Yo'}</ElButton>
+  }
+})
 ```
 
 ## 全局注册
@@ -44,18 +40,13 @@ export default defineComponent({
 
 只注册需要的组件
 
-代码地址：[src/components/registerGlobComp.ts](https://github.com/crlang/vue-tony-admin/tree/main/src/components/registerGlobComp.ts)
+代码地址：[src/components/registerGlobComp.ts](https://github.com/crlang/vue-tony-admin/blob/main/src/components/registerGlobComp.ts)
 
 ```ts
-import {
-  ElButton,
-  ElSelect,
-} from 'element-plus';
+import { ElButton, ElSelect } from 'element-plus'
 
 export function registerGlobComp(app: App) {
-  app
-    .use(ElButton)
-    .use(ElSelect);
+  app.use(ElButton).use(ElSelect)
 }
 ```
 
@@ -64,9 +55,9 @@ export function registerGlobComp(app: App) {
 - 在`main.ts`内
 
 ```ts
-import { createApp } from 'vue';
-import ElementPlus from 'element-plus';
-import 'element-plus/dist/index.css';
-const app = createApp(App);
-app.use(ElementPlus);
+import { createApp } from 'vue'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+const app = createApp(App)
+app.use(ElementPlus)
 ```

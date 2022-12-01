@@ -168,6 +168,6 @@ module.exports = {
   'package.json': ['prettier --write'],
   '*.vue': ['eslint --fix', 'stylelint --fix', 'prettier --write', 'git add .'],
   '*.{scss,styl,css,html}': ['stylelint --fix', 'prettier --write', 'git add .'],
-  '*.md': ['prettier --write'],
-};
+  '*.md': ['prettier --write']
+}
 ```
