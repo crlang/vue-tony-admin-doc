@@ -36,13 +36,13 @@ export default defineComponent({
 
 ## Props
 
-| 属性   | 类型      | 默认值  | 说明                             |
-| ------ | --------- | ------- | -------------------------------- |
-| name   | `string`  | -       | 图标名                           |
-| color  | `string`  | -       | 图标颜色，默认继承               |
-| size   | `number`  | -       | 图标大小，默认继承               |
-| spin   | `boolean` | `false` | 图标是否带旋转动画               |
-| prefix | `string`  | -       | 图标前缀，如 `ep:view` 中的 `ep` |
+| 属性   | 类型             | 默认值  | 说明                             |
+| ------ | ---------------- | ------- | -------------------------------- |
+| name   | `string`         | -       | 图标名                           |
+| color  | `string`         | -       | 图标颜色，默认继承               |
+| size   | `number\|string` | -       | 图标大小，默认继承               |
+| spin   | `boolean`        | `false` | 图标是否带旋转动画               |
+| prefix | `string`         | -       | 图标前缀，如 `ep:view` 中的 `ep` |
 
 ::: tip 温馨提示
 

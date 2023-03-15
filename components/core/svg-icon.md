@@ -27,10 +27,10 @@ export default defineComponent({
 
 ### Props
 
-| 属性   | 类型      | 默认值  | 说明                                        |
-| ------ | --------- | ------- | ------------------------------------------- |
-| name   | `string`  | -       | svg 图标名，名称对应 svg 文件的名称         |
-| size   | `number`  | -       | 图标大小，默认继承                          |
-| spin   | `boolean` | `false` | 图标是否带旋转动画                          |
-| color  | `string`  | -       | 图标颜色，默认继承                          |
-| prefix | `string`  | 'icon'  | SymbolId 命名前缀，如无特殊使用，可不予理会 |
+| 属性   | 类型             | 默认值  | 说明                                        |
+| ------ | ---------------- | ------- | ------------------------------------------- |
+| name   | `string`         | -       | svg 图标名，名称对应 svg 文件的名称         |
+| size   | `number\|string` | -       | 图标大小，默认继承上级字体大小              |
+| spin   | `boolean`        | `false` | 图标是否带旋转动画                          |
+| color  | `string`         | -       | 图标颜色，默认继承                          |
+| prefix | `string`         | 'icon'  | SymbolId 命名前缀，如无特殊使用，可不予理会 |
