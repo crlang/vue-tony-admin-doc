@@ -509,9 +509,16 @@ export default defineComponent({
 | children | `array` | `BasicColumn[]` | 表格子项，传入 `BasicColumn`数组 |
 | isSlot | `boolean` | `false` | 是否 slot 模式，默认 slot 名称为 `prop` 值 |
 | defaultHidden | `boolean` | `false` | 是否默认默认隐藏 |
+| defaultValue | `string` | `` | 当内容为空时，显示此处默认内容，（） |
 | customRender | `object` | `TableColumnRender` | 表单元格的渲染器，传入`TableColumnRender`对象。返回值应该是 VNode |
 | auth | `RoleEnum \| RoleEnum[] \| string \| string[]` | - | 根据权限编码来控制当前列是否显示， 传入`RoleEnum`数组或字符串，`RoleEnum`需自定义 |
 | ifShow | `boolean\|() => boolean` | `false` | 根据业务状态来控制当前列是否显示 |
+
+:::tip defaultValue 说明
+
+只是对自带的 [formatter](https://element-plus.org/zh-CN/component/table.html#table-column-%E5%B1%9E%E6%80%A7) 进行简单的默认值显示，如需更复杂的，请自行拓展 formatter 参数
+
+:::
 
 ## Slots
 
