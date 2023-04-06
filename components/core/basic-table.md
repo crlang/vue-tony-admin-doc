@@ -512,7 +512,7 @@ export default defineComponent({
 | defaultValue | `string` | `` | 当内容为空时，显示此处默认内容，（） |
 | customRender | `object` | `TableColumnRender` | 表单元格的渲染器，传入`TableColumnRender`对象。返回值应该是 VNode |
 | auth | `RoleEnum \| RoleEnum[] \| string \| string[]` | - | 根据权限编码来控制当前列是否显示， 传入`RoleEnum`数组或字符串，`RoleEnum`需自定义 |
-| ifShow | `boolean\|() => boolean` | `false` | 根据业务状态来控制当前列是否显示 |
+| ifShow | `boolean\|(column: BasicColumn, scope: scopeInfo, action: TableActionItem) => boolean` | `false` | 根据业务状态来控制当前列是否显示 |
 
 :::tip defaultValue 说明
 
@@ -573,7 +573,7 @@ const [register, methods] = useTable()
 | svgName | `string` | Svg 图标的名称 |
 | popConfirm | `object` | 如果有，将转为弹窗确认按钮模式，配置参考 `useMessage` 的 `createConfirm` |
 | auth | `RoleEnum \| RoleEnum[] \| string \| string[]` | 通过权限判断是否显示当前操作项 |
-| ifShow | `boolean \| ((action: TableActionItem) => boolean)` | 通过条件判断是否显示 |
+| ifShow | `boolean \| ((column: BasicColumn, scope: scopeInfo, action: TableActionItem) => boolean)` | 通过条件判断是否显示 |
 | callback | `(info: scopeInfo, action?: EleActionPopconfirmAction) => void` | 操作列的点击回调，当为确认按钮模式时，将会在确认弹窗操作后触发回调 |
 
 ## 全局配置
