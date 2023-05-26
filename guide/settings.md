@@ -109,7 +109,7 @@ VITE_LEGACY = false
 
 ### 说明
 
-当执行`yarn build`构建项目之后，会自动生成 `app.config.js` 文件并插入 `index.html`。
+当执行`pnpm build`构建项目之后，会自动生成 `app.config.js` 文件并插入 `index.html`。
 
 **注意: 开发环境不会生成**
 

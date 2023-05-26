@@ -8,7 +8,7 @@
 
 ```bash
 # 在终端输入下面的命令完成安装
-yarn add element-plus
+pnpm add element-plus
 ```
 
 ## 使用

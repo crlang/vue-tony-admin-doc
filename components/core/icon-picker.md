@@ -53,5 +53,3 @@ export default defineComponent({
 **`mode`为`svg`时**
 
 > 会使用 `/src/assets/icons` 下的所有 svg 图标（包含一级子目录）作为图标池
-
-<!-- > 详见[vite-plugin-svg-icons](https://github.com/vbenjs/vite-plugin-svg-icons/blob/main/README.zh_CN.md) -->

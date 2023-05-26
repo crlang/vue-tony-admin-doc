@@ -74,9 +74,9 @@ export default defineComponent({
 
 ```bash
 
-yarn add @iconify/iconify
+pnpm add @iconify/iconify
 
-yarn add @iconify/json @purge-icons/generated -D
+pnpm add @iconify/json @purge-icons/generated -D
 
 ```
 
@@ -215,22 +215,22 @@ span.iconify {
 - 执行图标生成命令
 
 ```bash
-yarn gen:icon
+pnpm gen:icon
 ```
 
 - 这里会让你选择本地还是在线生成，两种方式各有利弊。如下图所示
 
 local 表示本地，online 表示在线，回车确认
 
-![](/images/genIcon.png)
+![](/genIcon.png)
 
 - 选择你要生成的图标集,回车确认
 
-![](/images/selectIconSet.png)
+![](/selectIconSet.png)
 
 - 选择图标输出的目录(项目默认 src/components/Icon/data)，可以直接回车选择默认
 
-![](/images/outDir.png)
+![](/outDir.png)
 
 到这里图标集已经生成完成了，此时你的图标选择器已经是你所选的的图标集的图标了。
 

@@ -12,11 +12,11 @@
 
 ## 环境准备
 
-本地环境需要安装 [Yarn1.x](https://yarnpkg.com/)、[Node.js](http://nodejs.org/) 和 [Git](https://git-scm.com/)
+本地环境需要安装 [pnpm](https://pnpm.io//)、[Node.js](http://nodejs.org/) 和 [Git](https://git-scm.com/)
 
 ::: warning 版本要求
 
-yarn >= 1.x
+pnpm >= 8.x
 
 node >= 16.x
 
@@ -98,19 +98,19 @@ node -v
 
 ### 安装依赖
 
-#### yarn 安装
+#### pnpm 安装
 
-强烈建议用 [Yarn](https://github.com/yarnpkg/yarn)进行依赖安装。
+强烈建议用 [pnpm](https://pnpm.io/)进行依赖安装。
 
-如果未安装 `yarn`，可以用下面命令来进行全局安装
+如果未安装 `pnpm`，可以用下面命令来进行全局安装
 
 ```bash
 
-# 全局安装yarn
-npm i -g yarn
+# 全局安装pnpm
+npm i -g pnpm
 
 # 验证，出现对应版本号即代表安装成功
-yarn -v
+pnpm -v
 
 ```
 
@@ -119,15 +119,8 @@ yarn -v
 在项目根目录下，执行下方的命令，耐心等待安装完成即可
 
 ```bash
-
 # 安装依赖
-yarn
-
-# 或
-yarn install
-
-# 两者效果是一样的
-
+pnpm install
 ```
 
 ::: tip 安装依赖时 husky 安装失败
@@ -136,73 +129,50 @@ yarn install
 
 :::
 
-::: tip imagemin 依赖安装失败解决方法
-
-使用 yarn 在 package.json 内配置(推荐，项目内已集成，前提是必须使用 yarn)
-
-```json
-"resolutions": {
-  "bin-wrapper": "npm:bin-wrapper-china"
-}
-```
-
-:::
-
 ## npm script
 
-```bash
+```json
 "scripts": {
-  # 安装依赖
-  "bootstrap": "yarn install",
-  # 运行项目
+  // 安装依赖
+  "bootstrap": "pnpm install",
+  // 运行项目
   "serve": "npm run dev",
-  # 运行项目
+  // 运行项目(推荐)
   "dev": "vite",
-  # 构建项目
-  "build": "cross-env NODE_ENV=production vite build && esno ./build/script/postBuild.ts",
-  # 构建项目-一个演示的构建拓展，需要项目根目录存在 .env.site.local
-  "build:site": "cross-env NODE_ENV=production vite build --mode site && esno ./build/script/postBuild.ts",
-  # 构建项目测试
-  "build:test": "cross-env vite build --mode test && esno ./build/script/postBuild.ts",
-  # 清空缓存后构建项目
-  "build:no-cache": "yarn clean:cache && npm run build",
-  # 生成打包分析，在 `Mac OS` 电脑上执行完成后会自动打开界面，在 `Window` 电脑上执行完成后需要打开 `./build/.cache/stats.html` 查看
-  "report": "cross-env REPORT=true npm run build",
-  # 类型检查
-  "type:check": "vue-tsc --noEmit --skipLibCheck",
-  # 预览打包后的内容（先打包在进行预览）
+  // 构建项目
+  "build": "cross-env NODE_ENV=production NODE_OPTIONS=--max-old-space-size=8192 pnpm vite build",
+  // 构建项目-一个演示的构建拓展
+  "build:site": "cross-env NODE_ENV=production NODE_OPTIONS=--max-old-space-size=8192 pnpm vite build --mode site",
+  // 测试构建项目
+  "build:test": "cross-env NODE_OPTIONS=--max-old-space-size=8192 pnpm vite build --mode test",
+  // 清空缓存后构建项目
+  "build:no-cache": "pnpm clean:cache && npm run build",
+  // 预览构建后的内容（先打包再进行预览）
   "preview": "npm run build && vite preview",
-  # 直接预览本地 dist 文件目录
-  "preview:dist": "vite preview",
-  # 生成 ChangeLog
-  "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
-  # 删除缓存
-  "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
-  # 删除 node_modules (`window` 系统手动删除该目录较慢，可以使用该命令来进行删除)
-  "clean:lib": "rimraf node_modules",
-  # 执行 eslint 校验，并修复部分问题
-  "lint:eslint": "eslint --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
-  # 执行 prettier 格式化（该命令会对项目所有代码进行 prettier 格式化，请谨慎执行）
+  // 类型检查
+  "type:check": "vue-tsc --noEmit --skipLibCheck",
+  // 对打包结果进行 gzip 测试
+  "test:gzip": "npx http-server dist --cors --gzip -c-1",
+  // 对打包目录进行 brotli 测试
+  "test:br": "npx http-server dist --cors --brotli -c-1",
+  // 执行 eslint
+  "lint:eslint": "eslint --max-warnings 0  \"src/**/*.{vue,ts,tsx}\" --fix",
+  // 执行 prettier
   "lint:prettier": "prettier --write  \"src/**/*.{js,json,ts,vue,tsx,html,md}\"",
-  # 执行 stylelint 格式化
+  // 执行 stylelint
   "lint:stylelint": "stylelint --fix \"**/*.{vue,postcss,css,scss}\" --cache-location node_modules/.cache/stylelint/",
-  "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
-  "lint:pretty": "pretty-quick --staged",
-  "test:unit": "jest",
-  "test:unit-coverage": "jest --coverage",
-  # 对打包结果进行 gzip 测试
-  "test:gzip": "http-server dist --cors --gzip -c-1",
-  # 对打包目录进行 brotli 测试
-  "test:br": "http-server dist --cors --brotli -c-1",
-  # 重新安装依赖，见下方说明
-  "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
+  // git commit 规范提交
+  "commit": "czg",
+  // 生成 ChangeLog
+  "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
+  // 重新安装依赖
+  "reinstall": "rimraf pnpm-lock.yaml && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
+  // 只允许pnpm
+  "preinstall": "npx only-allow pnpm",
+  // husky 安装
   "prepare": "husky install"
 },
 ```
-
-**重新安装依赖**
-
-该命令会先删除 `node_modules`、`yarn.lock`、`package.lock.json` 后再进行依赖重新安装（安装速度会明显变慢）。
 
 ## 目录说明
 

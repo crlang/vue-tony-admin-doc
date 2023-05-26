@@ -13,7 +13,7 @@
 项目开发完成之后，执行以下命令进行构建
 
 ```bash
-yarn build
+pnpm build
 ```
 
 构建打包成功之后，会在根目录生成 dist 文件夹，里面就是构建打包好的文件
@@ -38,16 +38,16 @@ VITE_LEGACY = true
 
 ```bash
 # 先打包在进行预览
-yarn preview
+pnpm preview
 # 直接预览本地 dist 文件目录
-yarn preview:dist
+pnpm preview:dist
 ```
 
 - 本地服务器预览(通过 live-server)
 
 ```bash
 # 1.全局安装live-server
-yarn global add live-server
+pnpm add -g live-server
 # 2. 进入打包的后目录
 cd ./dist
 # 本地预览，默认端口8080
@@ -61,7 +61,7 @@ live-server --port 9000
 如果你的构建文件很大，可以通过项目内置 [rollup-plugin-analyzer](https://github.com/doesdev/rollup-plugin-analyzer) 插件进行代码体积分析，从而优化你的代码。
 
 ```bash
-yarn report
+pnpm report
 
 ```
 
@@ -73,7 +73,7 @@ yarn report
 
 :::
 
-![](/images/report.png)
+![](/report.png)
 
 ## 压缩
 

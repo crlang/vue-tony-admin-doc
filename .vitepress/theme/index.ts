@@ -1,14 +1,12 @@
-import Theme from '../theme-default';
-
-import 'windi-base.css';
-import 'windi-components.css';
-import 'windi-utilities.css';
-
-import './styles/var.css';
-import './styles/custom.css';
-import './styles/layout.css';
-import './styles/code-theme.css';
+import { h } from 'vue'
+import Theme from 'vitepress/theme'
+import './styles/vars.css'
+import './custom.css'
 
 export default {
   ...Theme,
-};
+  Layout() {
+    return h(Theme.Layout, null, {    })
+  },
+  enhanceApp({ app }) {  },
+}
